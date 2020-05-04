@@ -432,3 +432,7 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.genruntimeconfig.cache
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.csprojAssemblyReference.cache
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Degree\Index.cshtml.g.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Degree\Create.cshtml.g.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Logout.cshtml.g.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\School\Index.cshtml.g.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Loan\Index.cshtml.g.cs

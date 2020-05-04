@@ -114,9 +114,100 @@ namespace SchoolScoreMVC.Data
 );
 
 
+            modelBuilder.Entity<School>().HasData(
+               new School()
+               {
+                   Id = 1,
+                   SchoolName = "MTSU",
+                   Address = "",
+                   City = "",
+                   State = "",
+                   Zip = ""
+               },
+                new School()
+                {
+                    Id = 2,
+                    SchoolName = "Tennesse Tech",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                },
+        
+                new School()
+                {
+                    Id = 3,
+                    SchoolName = "Vanderbilt",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                },
+                new School()
+                {
+                    Id = 4,
+                    SchoolName = "U of I Chicago",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                },
+                new School()
+                {
+                    Id = 5,
+                    SchoolName = "U of I Urbana",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                },
+                new School()
+                {
+                    Id = 6,
+                    SchoolName = "Kentucky State",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                },
+                new School()
+                {
+                    Id = 7,
+                    SchoolName = "University of OH",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                },
+                new School()
+                {
+                    Id = 8,
+                    SchoolName = "Columbia State",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                },
+                new School()
+                {
+                    Id = 9,
+                    SchoolName = "Nashville School of Software",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                },
+                new School()
+                {
+                    Id = 10,
+                    SchoolName = "Bubbas School of Learning",
+                    Address = "",
+                    City = "",
+                    State = "",
+                    Zip = ""
+                }
 
-
-
+               );
 
         }
     }

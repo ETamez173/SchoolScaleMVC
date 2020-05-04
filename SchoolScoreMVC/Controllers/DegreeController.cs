@@ -45,19 +45,30 @@ namespace SchoolScoreMVC.Controllers
         }
 
         // GET: Degree/Create
-        public ActionResult Create()
+        public IActionResult Create()
         {
+            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
+  
             return View();
         }
 
         // POST: Degree/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+      
+        public async Task<IActionResult> Create([Bind("Id,EducationName,EarningAvg,EarningHigh,EarningLow")] Degree degree)
         {
             try
             {
-                // TODO: Add insert logic here
+             
+
+                var user = await GetCurrentUserAsync();
+            
+                _context.Degree.Add(degree);
+                await _context.SaveChangesAsync();
+
 
                 return RedirectToAction(nameof(Index));
             }
