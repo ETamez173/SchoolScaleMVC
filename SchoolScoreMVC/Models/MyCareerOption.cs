@@ -27,14 +27,14 @@ namespace SchoolScoreMVC.Models
         
 
         [Required]
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         [Required]
         public ApplicationUser ApplicationUser { get; set; }
         // one user can have many career options
 
        
-        public int LoanId { get; set; }
+        //public int LoanId { get; set; }
 
 
 

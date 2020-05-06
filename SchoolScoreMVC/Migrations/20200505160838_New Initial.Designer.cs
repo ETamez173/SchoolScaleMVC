@@ -10,8 +10,8 @@ using SchoolScoreMVC.Data;
 namespace SchoolScoreMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20200504213513_School Seeding")]
-    partial class SchoolSeeding
+    [Migration("20200505160838_New Initial")]
+    partial class NewInitial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -363,10 +363,7 @@ namespace SchoolScoreMVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId1")
+                    b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -375,6 +372,9 @@ namespace SchoolScoreMVC.Migrations
 
                     b.Property<double>("CashPaid")
                         .HasColumnType("float");
+
+                    b.Property<int>("DegreeSchoolId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("FinWorkBenchStep")
                         .HasColumnType("bit");
@@ -411,7 +411,9 @@ namespace SchoolScoreMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("DegreeSchoolId");
 
                     b.ToTable("Loan");
                 });
@@ -423,17 +425,11 @@ namespace SchoolScoreMVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId1")
+                    b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("DegreeSchoolId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LoanId")
                         .HasColumnType("int");
 
                     b.Property<bool>("SearchSchool")
@@ -444,7 +440,7 @@ namespace SchoolScoreMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("DegreeSchoolId");
 
@@ -642,13 +638,13 @@ namespace SchoolScoreMVC.Migrations
             modelBuilder.Entity("SchoolScoreMVC.Models.DegreeSchool", b =>
                 {
                     b.HasOne("SchoolScoreMVC.Models.Degree", "Degree")
-                        .WithMany()
+                        .WithMany("DegreeSchools")
                         .HasForeignKey("DegreeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SchoolScoreMVC.Models.School", "School")
-                        .WithMany()
+                        .WithMany("DegreeSchools")
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -658,7 +654,13 @@ namespace SchoolScoreMVC.Migrations
                 {
                     b.HasOne("SchoolScoreMVC.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Loans")
-                        .HasForeignKey("ApplicationUserId1")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolScoreMVC.Models.DegreeSchool", "DegreeSchool")
+                        .WithMany()
+                        .HasForeignKey("DegreeSchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -667,7 +669,7 @@ namespace SchoolScoreMVC.Migrations
                 {
                     b.HasOne("SchoolScoreMVC.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("MyCareerOptions")
-                        .HasForeignKey("ApplicationUserId1")
+                        .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

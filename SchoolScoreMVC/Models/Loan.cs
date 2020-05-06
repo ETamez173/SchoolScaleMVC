@@ -33,13 +33,16 @@ namespace SchoolScoreMVC.Models
         //public int CustomerId { get; set; }
 
         [Required]
-        public int ApplicationUserId { get; set; }
+        public string ApplicationUserId { get; set; }
 
         [Required]
         public ApplicationUser ApplicationUser { get; set; }
         // Ask Adam if I should remove this !!!!!!
         // one user can have many loans 
 
+        public int DegreeSchoolId { get; set; }
+
+        public DegreeSchool DegreeSchool { get; set; }
 
     }
 }

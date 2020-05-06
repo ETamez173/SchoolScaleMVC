@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace SchoolScoreMVC.Migrations
 {
-    public partial class Initial : Migration
+    public partial class NewInitial : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -42,7 +42,8 @@ namespace SchoolScoreMVC.Migrations
                     AccessFailedCount = table.Column<int>(nullable: false),
                     Discriminator = table.Column<string>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
-                    LastName = table.Column<string>(nullable: true)
+                    LastName = table.Column<string>(nullable: true),
+                    StreetAddress = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -189,39 +190,6 @@ namespace SchoolScoreMVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Loan",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    LoanAmount = table.Column<double>(nullable: false),
-                    LoanRate = table.Column<int>(nullable: false),
-                    LoanLengthMonths = table.Column<int>(nullable: false),
-                    LoanLengthYears = table.Column<int>(nullable: false),
-                    LoanPayment = table.Column<double>(nullable: false),
-                    TotalLoanPayments = table.Column<double>(nullable: false),
-                    CashPaid = table.Column<double>(nullable: false),
-                    Grants = table.Column<double>(nullable: false),
-                    Scholarships = table.Column<double>(nullable: false),
-                    TotalAmountPaid = table.Column<double>(nullable: false),
-                    FutureCareerEarnings = table.Column<double>(nullable: false),
-                    BenefitCostAnalysisRatio = table.Column<int>(nullable: false),
-                    FinWorkBenchStep = table.Column<bool>(nullable: false),
-                    ApplicationUserId = table.Column<int>(nullable: false),
-                    ApplicationUserId1 = table.Column<string>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Loan", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Loan_AspNetUsers_ApplicationUserId1",
-                        column: x => x.ApplicationUserId1,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "DegreeSchool",
                 columns: table => new
                 {
@@ -251,6 +219,45 @@ namespace SchoolScoreMVC.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Loan",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    LoanAmount = table.Column<double>(nullable: false),
+                    LoanRate = table.Column<int>(nullable: false),
+                    LoanLengthMonths = table.Column<int>(nullable: false),
+                    LoanLengthYears = table.Column<int>(nullable: false),
+                    LoanPayment = table.Column<double>(nullable: false),
+                    TotalLoanPayments = table.Column<double>(nullable: false),
+                    CashPaid = table.Column<double>(nullable: false),
+                    Grants = table.Column<double>(nullable: false),
+                    Scholarships = table.Column<double>(nullable: false),
+                    TotalAmountPaid = table.Column<double>(nullable: false),
+                    FutureCareerEarnings = table.Column<double>(nullable: false),
+                    BenefitCostAnalysisRatio = table.Column<int>(nullable: false),
+                    FinWorkBenchStep = table.Column<bool>(nullable: false),
+                    ApplicationUserId = table.Column<string>(nullable: false),
+                    DegreeSchoolId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Loan", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Loan_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Loan_DegreeSchool_DegreeSchoolId",
+                        column: x => x.DegreeSchoolId,
+                        principalTable: "DegreeSchool",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "MyCareerOption",
                 columns: table => new
                 {
@@ -259,16 +266,14 @@ namespace SchoolScoreMVC.Migrations
                     SearchSchool = table.Column<bool>(nullable: false),
                     ShortList = table.Column<bool>(nullable: false),
                     DegreeSchoolId = table.Column<int>(nullable: false),
-                    ApplicationUserId = table.Column<int>(nullable: false),
-                    ApplicationUserId1 = table.Column<string>(nullable: false),
-                    LoanId = table.Column<int>(nullable: false)
+                    ApplicationUserId = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_MyCareerOption", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_MyCareerOption_AspNetUsers_ApplicationUserId1",
-                        column: x => x.ApplicationUserId1,
+                        name: "FK_MyCareerOption_AspNetUsers_ApplicationUserId",
+                        column: x => x.ApplicationUserId,
                         principalTable: "AspNetUsers",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -278,6 +283,39 @@ namespace SchoolScoreMVC.Migrations
                         principalTable: "DegreeSchool",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Degree",
+                columns: new[] { "Id", "EarningAvg", "EarningHigh", "EarningLow", "EducationName" },
+                values: new object[,]
+                {
+                    { 1, 90000.0, 98000.0, 84000.0, "Electical Engineer" },
+                    { 2, 90000.0, 98000.0, 84000.0, "Chemical Engineer" },
+                    { 3, 60000.0, 73000.0, 55000.0, "Registered Nurse" },
+                    { 4, 95000.0, 105000.0, 80000.0, "Computer Science" },
+                    { 5, 30000.0, 38000.0, 24000.0, "Liberal Arts" },
+                    { 6, 95000.0, 105000.0, 80000.0, "Full Stack Software Developer" },
+                    { 7, 95000.0, 105000.0, 80000.0, "Front-End Web Designer Developer" },
+                    { 8, 95000.0, 105000.0, 80000.0, "Data Science" },
+                    { 9, 95000.0, 105000.0, 80000.0, "Data Analytics" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "School",
+                columns: new[] { "Id", "Address", "City", "SchoolName", "State", "Zip" },
+                values: new object[,]
+                {
+                    { 8, "", "", "Columbia State", "", "" },
+                    { 7, "", "", "University of OH", "", "" },
+                    { 6, "", "", "Kentucky State", "", "" },
+                    { 5, "", "", "U of I Urbana", "", "" },
+                    { 1, "", "", "MTSU", "", "" },
+                    { 3, "", "", "Vanderbilt", "", "" },
+                    { 2, "", "", "Tennesse Tech", "", "" },
+                    { 9, "", "", "Nashville School of Software", "", "" },
+                    { 4, "", "", "U of I Chicago", "", "" },
+                    { 10, "", "", "Bubbas School of Learning", "", "" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -330,14 +368,19 @@ namespace SchoolScoreMVC.Migrations
                 column: "SchoolId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Loan_ApplicationUserId1",
+                name: "IX_Loan_ApplicationUserId",
                 table: "Loan",
-                column: "ApplicationUserId1");
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_MyCareerOption_ApplicationUserId1",
+                name: "IX_Loan_DegreeSchoolId",
+                table: "Loan",
+                column: "DegreeSchoolId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_MyCareerOption_ApplicationUserId",
                 table: "MyCareerOption",
-                column: "ApplicationUserId1");
+                column: "ApplicationUserId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_MyCareerOption_DegreeSchoolId",

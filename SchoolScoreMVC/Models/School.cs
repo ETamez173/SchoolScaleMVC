@@ -23,5 +23,9 @@ namespace SchoolScoreMVC.Models
         public string State { get; set; }
 
         public string Zip { get; set; }
+
+        public List<DegreeSchool> DegreeSchools { get; set; }
+
+
     }
 }

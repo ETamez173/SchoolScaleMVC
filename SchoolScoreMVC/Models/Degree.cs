@@ -23,5 +23,8 @@ namespace SchoolScoreMVC.Models
 
         [Display(Name = "Yearly Earnings Low")]
         public double EarningLow { get; set; }
+
+        public List<DegreeSchool> DegreeSchools { get; set; }
+
     }
 }

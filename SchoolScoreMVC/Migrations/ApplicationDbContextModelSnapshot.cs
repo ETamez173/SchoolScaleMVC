@@ -352,6 +352,350 @@ namespace SchoolScoreMVC.Migrations
                     b.HasIndex("SchoolId");
 
                     b.ToTable("DegreeSchool");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AnnualCost = 12500.0,
+                            DegreeId = 1,
+                            SchoolId = 1,
+                            StudyYears = 4,
+                            TotalCost = 50000.0
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AnnualCost = 25000.0,
+                            DegreeId = 1,
+                            SchoolId = 2,
+                            StudyYears = 4,
+                            TotalCost = 100000.0
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AnnualCost = 25000.0,
+                            DegreeId = 1,
+                            SchoolId = 3,
+                            StudyYears = 4,
+                            TotalCost = 100000.0
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AnnualCost = 20000.0,
+                            DegreeId = 1,
+                            SchoolId = 4,
+                            StudyYears = 4,
+                            TotalCost = 80000.0
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AnnualCost = 12000.0,
+                            DegreeId = 1,
+                            SchoolId = 5,
+                            StudyYears = 4,
+                            TotalCost = 48000.0
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AnnualCost = 8000.0,
+                            DegreeId = 1,
+                            SchoolId = 6,
+                            StudyYears = 4,
+                            TotalCost = 32000.0
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AnnualCost = 10000.0,
+                            DegreeId = 1,
+                            SchoolId = 7,
+                            StudyYears = 4,
+                            TotalCost = 40000.0
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AnnualCost = 6500.0,
+                            DegreeId = 1,
+                            SchoolId = 8,
+                            StudyYears = 4,
+                            TotalCost = 26000.0
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AnnualCost = 1200.0,
+                            DegreeId = 1,
+                            SchoolId = 10,
+                            StudyYears = 4,
+                            TotalCost = 4800.0
+                        },
+                        new
+                        {
+                            Id = 10,
+                            AnnualCost = 11250.0,
+                            DegreeId = 2,
+                            SchoolId = 1,
+                            StudyYears = 4,
+                            TotalCost = 45000.0
+                        },
+                        new
+                        {
+                            Id = 11,
+                            AnnualCost = 13000.0,
+                            DegreeId = 2,
+                            SchoolId = 2,
+                            StudyYears = 4,
+                            TotalCost = 52000.0
+                        },
+                        new
+                        {
+                            Id = 12,
+                            AnnualCost = 22000.0,
+                            DegreeId = 2,
+                            SchoolId = 4,
+                            StudyYears = 4,
+                            TotalCost = 88000.0
+                        },
+                        new
+                        {
+                            Id = 13,
+                            AnnualCost = 21000.0,
+                            DegreeId = 2,
+                            SchoolId = 5,
+                            StudyYears = 4,
+                            TotalCost = 84000.0
+                        },
+                        new
+                        {
+                            Id = 14,
+                            AnnualCost = 10500.0,
+                            DegreeId = 2,
+                            SchoolId = 7,
+                            StudyYears = 4,
+                            TotalCost = 42000.0
+                        },
+                        new
+                        {
+                            Id = 15,
+                            AnnualCost = 1200.0,
+                            DegreeId = 2,
+                            SchoolId = 10,
+                            StudyYears = 4,
+                            TotalCost = 4800.0
+                        },
+                        new
+                        {
+                            Id = 16,
+                            AnnualCost = 8500.0,
+                            DegreeId = 5,
+                            SchoolId = 1,
+                            StudyYears = 4,
+                            TotalCost = 34000.0
+                        },
+                        new
+                        {
+                            Id = 17,
+                            AnnualCost = 15000.0,
+                            DegreeId = 5,
+                            SchoolId = 4,
+                            StudyYears = 4,
+                            TotalCost = 60000.0
+                        },
+                        new
+                        {
+                            Id = 18,
+                            AnnualCost = 9500.0,
+                            DegreeId = 3,
+                            SchoolId = 1,
+                            StudyYears = 4,
+                            TotalCost = 38000.0
+                        },
+                        new
+                        {
+                            Id = 19,
+                            AnnualCost = 13000.0,
+                            DegreeId = 3,
+                            SchoolId = 3,
+                            StudyYears = 4,
+                            TotalCost = 52000.0
+                        },
+                        new
+                        {
+                            Id = 20,
+                            AnnualCost = 20000.0,
+                            DegreeId = 3,
+                            SchoolId = 4,
+                            StudyYears = 4,
+                            TotalCost = 80000.0
+                        },
+                        new
+                        {
+                            Id = 21,
+                            AnnualCost = 16000.0,
+                            DegreeId = 3,
+                            SchoolId = 5,
+                            StudyYears = 4,
+                            TotalCost = 64000.0
+                        },
+                        new
+                        {
+                            Id = 22,
+                            AnnualCost = 7500.0,
+                            DegreeId = 3,
+                            SchoolId = 6,
+                            StudyYears = 4,
+                            TotalCost = 30000.0
+                        },
+                        new
+                        {
+                            Id = 23,
+                            AnnualCost = 9000.0,
+                            DegreeId = 3,
+                            SchoolId = 7,
+                            StudyYears = 4,
+                            TotalCost = 36000.0
+                        },
+                        new
+                        {
+                            Id = 24,
+                            AnnualCost = 7000.0,
+                            DegreeId = 3,
+                            SchoolId = 8,
+                            StudyYears = 4,
+                            TotalCost = 28000.0
+                        },
+                        new
+                        {
+                            Id = 25,
+                            AnnualCost = 800.0,
+                            DegreeId = 3,
+                            SchoolId = 10,
+                            StudyYears = 4,
+                            TotalCost = 3200.0
+                        },
+                        new
+                        {
+                            Id = 26,
+                            AnnualCost = 10000.0,
+                            DegreeId = 4,
+                            SchoolId = 1,
+                            StudyYears = 4,
+                            TotalCost = 40000.0
+                        },
+                        new
+                        {
+                            Id = 27,
+                            AnnualCost = 10000.0,
+                            DegreeId = 4,
+                            SchoolId = 2,
+                            StudyYears = 4,
+                            TotalCost = 40000.0
+                        },
+                        new
+                        {
+                            Id = 28,
+                            AnnualCost = 16000.0,
+                            DegreeId = 4,
+                            SchoolId = 3,
+                            StudyYears = 4,
+                            TotalCost = 64000.0
+                        },
+                        new
+                        {
+                            Id = 29,
+                            AnnualCost = 21000.0,
+                            DegreeId = 4,
+                            SchoolId = 4,
+                            StudyYears = 4,
+                            TotalCost = 84000.0
+                        },
+                        new
+                        {
+                            Id = 30,
+                            AnnualCost = 20000.0,
+                            DegreeId = 4,
+                            SchoolId = 5,
+                            StudyYears = 4,
+                            TotalCost = 80000.0
+                        },
+                        new
+                        {
+                            Id = 31,
+                            AnnualCost = 9000.0,
+                            DegreeId = 4,
+                            SchoolId = 6,
+                            StudyYears = 4,
+                            TotalCost = 36000.0
+                        },
+                        new
+                        {
+                            Id = 32,
+                            AnnualCost = 8750.0,
+                            DegreeId = 4,
+                            SchoolId = 7,
+                            StudyYears = 4,
+                            TotalCost = 35000.0
+                        },
+                        new
+                        {
+                            Id = 33,
+                            AnnualCost = 4000.0,
+                            DegreeId = 4,
+                            SchoolId = 8,
+                            StudyYears = 4,
+                            TotalCost = 16000.0
+                        },
+                        new
+                        {
+                            Id = 34,
+                            AnnualCost = 900.0,
+                            DegreeId = 4,
+                            SchoolId = 10,
+                            StudyYears = 4,
+                            TotalCost = 3600.0
+                        },
+                        new
+                        {
+                            Id = 35,
+                            AnnualCost = 12500.0,
+                            DegreeId = 6,
+                            SchoolId = 9,
+                            StudyYears = 1,
+                            TotalCost = 12500.0
+                        },
+                        new
+                        {
+                            Id = 36,
+                            AnnualCost = 12500.0,
+                            DegreeId = 7,
+                            SchoolId = 9,
+                            StudyYears = 1,
+                            TotalCost = 12500.0
+                        },
+                        new
+                        {
+                            Id = 37,
+                            AnnualCost = 12500.0,
+                            DegreeId = 8,
+                            SchoolId = 9,
+                            StudyYears = 1,
+                            TotalCost = 12500.0
+                        },
+                        new
+                        {
+                            Id = 38,
+                            AnnualCost = 7500.0,
+                            DegreeId = 9,
+                            SchoolId = 9,
+                            StudyYears = 1,
+                            TotalCost = 7500.0
+                        });
                 });
 
             modelBuilder.Entity("SchoolScoreMVC.Models.Loan", b =>
@@ -361,10 +705,7 @@ namespace SchoolScoreMVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId1")
+                    b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
@@ -373,6 +714,9 @@ namespace SchoolScoreMVC.Migrations
 
                     b.Property<double>("CashPaid")
                         .HasColumnType("float");
+
+                    b.Property<int>("DegreeSchoolId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("FinWorkBenchStep")
                         .HasColumnType("bit");
@@ -409,7 +753,9 @@ namespace SchoolScoreMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
+
+                    b.HasIndex("DegreeSchoolId");
 
                     b.ToTable("Loan");
                 });
@@ -421,17 +767,11 @@ namespace SchoolScoreMVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApplicationUserId")
-                        .HasColumnType("int");
-
-                    b.Property<string>("ApplicationUserId1")
+                    b.Property<string>("ApplicationUserId")
                         .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<int>("DegreeSchoolId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("LoanId")
                         .HasColumnType("int");
 
                     b.Property<bool>("SearchSchool")
@@ -442,7 +782,7 @@ namespace SchoolScoreMVC.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId1");
+                    b.HasIndex("ApplicationUserId");
 
                     b.HasIndex("DegreeSchoolId");
 
@@ -640,13 +980,13 @@ namespace SchoolScoreMVC.Migrations
             modelBuilder.Entity("SchoolScoreMVC.Models.DegreeSchool", b =>
                 {
                     b.HasOne("SchoolScoreMVC.Models.Degree", "Degree")
-                        .WithMany()
+                        .WithMany("DegreeSchools")
                         .HasForeignKey("DegreeId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("SchoolScoreMVC.Models.School", "School")
-                        .WithMany()
+                        .WithMany("DegreeSchools")
                         .HasForeignKey("SchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -656,7 +996,13 @@ namespace SchoolScoreMVC.Migrations
                 {
                     b.HasOne("SchoolScoreMVC.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("Loans")
-                        .HasForeignKey("ApplicationUserId1")
+                        .HasForeignKey("ApplicationUserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SchoolScoreMVC.Models.DegreeSchool", "DegreeSchool")
+                        .WithMany()
+                        .HasForeignKey("DegreeSchoolId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -665,7 +1011,7 @@ namespace SchoolScoreMVC.Migrations
                 {
                     b.HasOne("SchoolScoreMVC.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("MyCareerOptions")
-                        .HasForeignKey("ApplicationUserId1")
+                        .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

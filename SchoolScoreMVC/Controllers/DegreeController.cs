@@ -27,7 +27,7 @@ namespace SchoolScoreMVC.Controllers
             _userManager = userManager;
         }
         // GET: localhost:5001/degree
-        public async Task<ActionResult> Index(string filter)
+        public async Task<ActionResult> Index()
         {
 
             var user = await GetCurrentUserAsync();

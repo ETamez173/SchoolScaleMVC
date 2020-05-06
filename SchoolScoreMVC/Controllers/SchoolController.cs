@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SchoolScoreMVC.Models.SchoolViewModels;
 
 namespace SchoolScoreMVC.Controllers
 {
@@ -28,7 +29,8 @@ namespace SchoolScoreMVC.Controllers
         }
 
         // GET: localhost:5001/school
-        public async Task<ActionResult> Index(string filter)
+        public async Task<ActionResult> Index()
+        //public async Task<ActionResult> Index(string filter)
         {
 
             var user = await GetCurrentUserAsync();
@@ -38,6 +40,32 @@ namespace SchoolScoreMVC.Controllers
 
             return View(items);
         }
+
+
+        // GET: localhost:5001/school
+        public async Task<ActionResult> Search(int degreeId)
+        {
+            var user = await GetCurrentUserAsync();
+
+            //var viewModel = new SchoolSearchViewModel();
+              var viewModel = new List<SchoolSearchViewModel>();
+
+            var schools = await _context.School
+                    //.Where(s => s.DegreeSchools. == degreeId)
+                        .Include(s => s.DegreeSchools)
+                        .ThenInclude(s => s.Degree)
+                        .Where(d => d.Id == degreeId)
+                        .ToListAsync();
+         
+
+            //.Where(s => s.Id == DegreeSchool.SchoolId)
+
+
+
+
+            return View(viewModel);
+        }
+
         // GET: School/Details/5
         public ActionResult Details(int id)
         {
