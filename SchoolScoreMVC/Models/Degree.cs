@@ -15,13 +15,13 @@ namespace SchoolScoreMVC.Models
         [Display(Name = "Degree/Program")]
         public string EducationName { get; set; }
 
-        [Display(Name = "Yearly Earnings Average")]
+        [Display(Name = "Average")]
         public double EarningAvg { get; set; }
 
-        [Display(Name = "Yearly Earnings High")]
+        [Display(Name = "High")]
         public double EarningHigh { get; set; }
 
-        [Display(Name = "Yearly Earnings Low")]
+        [Display(Name = "Low")]
         public double EarningLow { get; set; }
 
         public List<DegreeSchool> DegreeSchools { get; set; }

@@ -13,20 +13,44 @@ namespace SchoolScoreMVC.Models
         [Required]
         public int Id { get; set; }
 
+        [Display(Name = "Loan Amount")]
         public double LoanAmount { get; set; }
+
+        [Display(Name = "Interest Rate%")]
         public int LoanRate { get; set; }
 
         //should LoanRate be int or double?
+
+        [Display(Name = "Loan Months")]
         public int LoanLengthMonths { get; set; }
+
+
+        [Display(Name = "Loan Years")]
         public int LoanLengthYears { get; set; }
+
+        [Display(Name = "Loan Payment")]
         public double LoanPayment { get; set; }
+
+        [Display(Name = "Total Loan Payments")]
         public double TotalLoanPayments { get; set; }
+
+        [Display(Name = "Cash")]
         public double CashPaid { get; set; }
+
+        [Display(Name = "Grants")]
         public double Grants { get; set; }
+
+
+        [Display(Name = "Scholarships")]
         public double Scholarships { get; set; }
+
+        [Display(Name = "Total Amounts Paid")]
         public double TotalAmountPaid { get; set; }
 
+        [Display(Name = "Career Earnings")]
         public double FutureCareerEarnings { get; set; }
+
+        [Display(Name = "Benefits To Costs Ratio")]
         public int BenefitCostAnalysisRatio { get; set; }
         public Boolean FinWorkBenchStep { get; set; }
 

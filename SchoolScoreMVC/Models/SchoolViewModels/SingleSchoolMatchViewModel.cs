@@ -9,31 +9,24 @@ using System.Threading.Tasks;
 
 namespace SchoolScoreMVC.Models.SchoolViewModels
 {
-    public class SchoolSearchViewModel
+    public class SingleSchoolMatchViewModel
     {
 
-        public int DegreeId { get; set; }
-
-        [Display(Name = "Degree/Program")]
+        [Display(Name = "Degree / Program")]
         public string EducationName { get; set; }
 
         [Display(Name = "School")]
         public string SchoolName { get; set; }
 
-
-        [Display(Name = "Annual Cost")]
+        [Display(Name = "Yearly Cost")]
         public double AnnualCost { get; set; }
 
         [Display(Name = "Total Cost")]
         public double TotalCost { get; set; }
 
-        public List<School> Schools { get; set; }
+       
 
-        public List<Degree> Degrees { get; set; }
+   
 
-        public List<DegreeSchool> DegreeSchools { get; set; }
-
-        public int SchoolId { get; set; }
-        public School School { get; set; }
     }
 }

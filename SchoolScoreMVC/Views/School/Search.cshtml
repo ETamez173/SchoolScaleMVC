@@ -1,10 +1,13 @@
 ﻿@model SchoolScoreMVC.Models.SchoolViewModels.SchoolSearchViewModel
 
+@*@model IEnumerable<SchoolScoreMVC.Models.SchoolViewModels.SchoolSearchViewModel>*@
+@*@model IEnumerable<SchoolScoreMVC.Models.SchoolViewModels.School>*@
+
 @{
     ViewData["Title"] = "Search";
 }
 
-<h1>Search</h1>
+<h1>Matching Schools</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -28,26 +31,27 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model.DegreeSchools) {
+        @foreach (var item in Model.Schools)
+        {
         <tr>
+            @*<td>
+            @Html.DisplayFor(modelItem => s.EducationName)
+        </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.Degree.EducationName)
+                @Html.DisplayFor(modelItem => item.SchoolName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.School.SchoolName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnnualCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalCost)
-            </td>
+            @*<td>
+            @Html.DisplayFor(modelItem => item.AnnualCost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TotalCost)
+        </td>*@
             <td>
                 @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |*@
+            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |*@
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
