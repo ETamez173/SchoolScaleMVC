@@ -1,5 +1,5 @@
-﻿@model IEnumerable<SchoolScoreMVC.Models.School>
-
+﻿@*@model IEnumerable<SchoolScoreMVC.Models.School>*@
+@model SchoolScoreMVC.Models.SchoolViewModels.MatchingSchoolsViewModel
 @{
     ViewData["Title"] = "SchoolMatch";
 }
@@ -12,10 +12,29 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            @*<th>
                 @Html.DisplayNameFor(model => model.Id)
+            </th>*@
+
+        <tr>
+            <th>
+                Degree / Program
             </th>
             <th>
+                School
+            </th>
+            <th>
+                Yearly Cost
+            </th>
+
+            <th>
+                Total Cost
+            </th>
+            <th></th>
+        </tr>
+
+
+@*<th>
                 @Html.DisplayNameFor(model => model.SchoolName)
             </th>
             <th>
@@ -31,35 +50,36 @@
                 @Html.DisplayNameFor(model => model.Zip)
             </th>
             <th></th>
-        </tr>
+        </tr>*@
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model.Schools)
+        {
         <tr>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.Id)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => Model.DegreeName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SchoolName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Address)
+                @Html.DisplayFor(modelItem => item.AnnualCost)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.City)
+                @Html.DisplayFor(modelItem => item.TotalCost)
             </td>
+          
             <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Zip)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+
+                <a asp-action="WorkBench" asp-controller="Loan" asp-route-schoolId="@item.SchoolId">Begin Analysis </a>
+
+           
+
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

@@ -1,5 +1,8 @@
-﻿@model SchoolScoreMVC.Models.SchoolViewModels.SchoolSearchViewModel
+﻿@*@when I use the first one it only gets and displays the SchoolName*@
+@model SchoolScoreMVC.Models.SchoolViewModels.SchoolSearchViewModel
 
+
+@*@when I use the second one it says viewModel doesnt contain definition for Schools *@
 @*@model IEnumerable<SchoolScoreMVC.Models.SchoolViewModels.SchoolSearchViewModel>*@
 @*@model IEnumerable<SchoolScoreMVC.Models.SchoolViewModels.School>*@
 
@@ -33,25 +36,27 @@
     <tbody>
         @foreach (var item in Model.Schools)
         {
-        <tr>
-            @*<td>
-            @Html.DisplayFor(modelItem => s.EducationName)
-        </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => item.SchoolName)
-            </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.AnnualCost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TotalCost)
-        </td>*@
-            <td>
-                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |*@
-            </td>
-        </tr>
+            <tr>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.EducationName)
+                </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.SchoolName)
+                </td>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.AnnualCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalCost)
+                </td>*@
+                <td>
+                    @Html.ActionLink("Run Analysis", "Edit", "Loan", new { id = item.Id })
+
+                    @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }) |*@
+                </td>
+            </tr>
         }
     </tbody>
 </table>

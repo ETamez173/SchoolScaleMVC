@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace SchoolScoreMVC.Models
+namespace SchoolScoreMVC.Models.DegreeViewModels
 {
-    public class Degree
+    public class DegreeListView
     {
-
         [Required]
         public int Id { get; set; }
 
@@ -16,16 +15,18 @@ namespace SchoolScoreMVC.Models
         public string EducationName { get; set; }
 
         [Display(Name = "Average")]
-        public double EarningAvg { get; set; }
+        public string EarningAvg { get; set; }
 
         [Display(Name = "High")]
-        public double EarningHigh { get; set; }
+        public string EarningHigh { get; set; }
 
         [Display(Name = "Low")]
-        public double EarningLow { get; set; }
+        public string EarningLow { get; set; }
 
         // this is to use the join table called DegreeSchool
-        public List<DegreeSchool> DegreeSchools { get; set; }
-
+        public List<DegreeSchool> DegreeSchools
+        {
+            get; set;
+        }
     }
 }

@@ -12,6 +12,8 @@ namespace SchoolScoreMVC.Models.SchoolViewModels
     public class SingleSchoolMatchViewModel
     {
 
+        public int SchoolId { get; set; }
+
         [Display(Name = "Degree / Program")]
         public string EducationName { get; set; }
 
@@ -19,10 +21,10 @@ namespace SchoolScoreMVC.Models.SchoolViewModels
         public string SchoolName { get; set; }
 
         [Display(Name = "Yearly Cost")]
-        public double AnnualCost { get; set; }
+        public string AnnualCost { get; set; }
 
         [Display(Name = "Total Cost")]
-        public double TotalCost { get; set; }
+        public string TotalCost { get; set; }
 
        
 

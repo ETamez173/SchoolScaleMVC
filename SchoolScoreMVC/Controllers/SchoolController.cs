@@ -43,26 +43,28 @@ namespace SchoolScoreMVC.Controllers
 
 
 
-        //  GET: localhost:5001/School/search?degree=3
-        public async Task<ActionResult> Search(int degreeId)
-        {
-            var user = await GetCurrentUserAsync();
+        //  GET: //localhost:5001/School/Search?degreeId=2
+        //public async Task<ActionResult> Search(int degreeId)
+        //{
+        //    var user = await GetCurrentUserAsync();
 
-            var viewModel = new SchoolSearchViewModel();
-            //var viewModel = new List<SchoolSearchViewModel>();
+        //    var viewModel = new SchoolSearchViewModel();
+        //    //var viewModel = new List<SchoolSearchViewModel>();
 
-            var schools = await _context.School
-                    //.Where(s => s.DegreeSchools. == degreeId)
-                        .Include(s => s.DegreeSchools)
-                        .ThenInclude(s => s.Degree)
-                        .Where(d => d.Id == degreeId)
-                        .ToListAsync();
+        //    //var schools = await _context.School
+        //        var schools = await _context.Degree
+        //                //.Where(s => ds.DegreeId == degreeId)
+        //                .Where(d => d.Id == degreeId)
+        //                .Include(d => d.DegreeSchools)
+        //                .ThenInclude(ds => ds.School)
 
-            viewModel.Schools = schools;
- 
+        //                .ToListAsync();
 
-            return View(viewModel);
-        }
+        //    viewModel.Degree = schools;
+
+
+        //    return View(viewModel);
+        //}
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // adding matching schools that offer the degree based on the degreeId passed when user clicks 
@@ -72,7 +74,7 @@ namespace SchoolScoreMVC.Controllers
         // GET: Schools with Degree localhost:5001/School/SchoolMatch/
 
         // localhost:5001/School/SchoolMatch?degreeId=2
-   
+
         public async Task<ActionResult> SchoolMatch(int degreeId)
         {
             var user = await GetCurrentUserAsync();
@@ -82,113 +84,38 @@ namespace SchoolScoreMVC.Controllers
             {
                 return new StatusCodeResult(StatusCodes.Status401Unauthorized);
             }
-            //if they are and the filter is cart, show them their cart
-            //else if (filter == "history")
 
-
-                else
+            else
             {
-
 
                 // build the item as a view model so we can show more information
                 var viewModel = new MatchingSchoolsViewModel();
-                //var viewModel = new OrderHistoryViewModel();
 
                 // Grab the schools
 
+                var degree = await _context.Degree
 
-                var schools = await _context.School
-                        //.Where(s => s.DegreeSchools. == degreeId)
-                        .Include(s => s.DegreeSchools)
-                        .ThenInclude(s => s.Degree)
-                        .Where(d => d.Id == degreeId)
-                        .ToListAsync();
+                       .Include(d => d.DegreeSchools)
+                       .ThenInclude(d => d.School)
+                       .FirstOrDefaultAsync(d => d.Id == degreeId);
 
+                viewModel.DegreeId = degree.Id;
+                viewModel.DegreeName = degree.EducationName;
 
-                // commented out below to see if code will render anything
-                //var schools = await _context.School
-                //                    .Where(s => s.UserId == user.Id)
-                //                    .Include(u => user.PaymentTypes)
-                //                    .Include(u => u.OrderProducts)
-                //                    .ThenInclude(op => op.Product)
-                //                    .Where(o => o.PaymentType != null).ToListAsync();
+                viewModel.Schools = degree.DegreeSchools.Select(ds => new SingleSchoolMatchViewModel()
+                {
 
+                    SchoolName = ds.School.SchoolName,
+                    AnnualCost = ds.AnnualCost.ToString("c"),
+                    TotalCost = ds.TotalCost.ToString("c"),
+                    SchoolId = ds.SchoolId
 
-                //var orders = await _context.Order
-                //                 .Where(o => o.UserId == user.Id)
-                //                 .Include(u => user.PaymentTypes)
-                //                 .Include(u => u.OrderProducts)
-                //                 .ThenInclude(op => op.Product)
-                //                 .Where(o => o.PaymentType != null).ToListAsync();
-
-
-
-
-
-
-
-                //build a list of the individual lines of products in the cart to show the quantity and price
-
-
-                // commented out below to see if code will render anything
-                //  may not need this view detailViewModels if I dont need to tally any items under each school like pending orders needed to do
-
-
-
-                var detailViewModels = new List<SingleSchoolMatchViewModel>();
-                //var detailViewModels = new List<OrderDetailViewModel>();
-
-
-
-                //// commented out below to see if code will render anything
-
-
-                //foreach (var school in schools)
-                ////foreach (var order in orders)
-                //{
-
-                //    order.PaymentType = _context.PaymentType.FirstOrDefault(pt => pt.PaymentTypeId == order.PaymentTypeId);
-
-                //    var lineItems = order.DegreeSchool.Select(op => new SchoolLineItem()
-                //    //var lineItems = order.OrderProducts.Select(op => new OrderLineItem()
-
-                //    {
-                //        Product = op.Product,
-                //        Units = op.Product.Quantity,
-                //        Cost = op.Product.Price,
-                //    }); ;
-                //    var schoolViewModel = new SingleSchoolMatchViewModel();
-                //    //var orderViewModel = new OrderDetailViewModel();
-                //    orderViewModel.LineItems = lineItems;
-                //    orderViewModel.Order = order;
-                //    orderViewModel.Order.PaymentType = order.PaymentType;
-                //    orderViewModel.OrderId = order.OrderId;
-                //    detailViewModels.Add(orderViewModel);
-
-                //    //ViewBag.ordertotal = lineItems.Sum(li => li.Cost);
-                //    schoolViewModel.OrderTotalCost = lineItems.Sum(li => li.Cost);
-                //    //orderViewModel.OrderTotalCost = lineItems.Sum(li => li.Cost);
-
-                //}
-
-
-
-                viewModel.Schools = detailViewModels;
-
-                //viewModel.Orders = detailViewModels;
-
+                }).ToList();
 
 
                 return View(viewModel);
 
             }
-
-            // commented out below to see if code will render anything
-
-            //else
-            //{
-            //    return RedirectToAction(nameof(Unauthorized));
-            //}
 
         }
 

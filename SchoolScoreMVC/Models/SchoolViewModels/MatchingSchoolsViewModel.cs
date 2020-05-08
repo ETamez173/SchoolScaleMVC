@@ -12,6 +12,10 @@ namespace SchoolScoreMVC.Models.SchoolViewModels
     public class MatchingSchoolsViewModel
     {
 
+        public int DegreeId { get; set; }
+
+        public string DegreeName { get; set; }
+
         //public List<School> Schools { get; set; }
 
 
