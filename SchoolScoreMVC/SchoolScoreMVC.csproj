@@ -21,9 +21,4 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Models\DegreeViewModels\" />
-    <Folder Include="Models\LoanViewModels\" />
-  </ItemGroup>
-
 </Project>

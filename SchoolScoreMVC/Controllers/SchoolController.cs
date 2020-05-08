@@ -41,37 +41,14 @@ namespace SchoolScoreMVC.Controllers
             return View(items);
         }
 
-
-
-        //  GET: //localhost:5001/School/Search?degreeId=2
-        //public async Task<ActionResult> Search(int degreeId)
-        //{
-        //    var user = await GetCurrentUserAsync();
-
-        //    var viewModel = new SchoolSearchViewModel();
-        //    //var viewModel = new List<SchoolSearchViewModel>();
-
-        //    //var schools = await _context.School
-        //        var schools = await _context.Degree
-        //                //.Where(s => ds.DegreeId == degreeId)
-        //                .Where(d => d.Id == degreeId)
-        //                .Include(d => d.DegreeSchools)
-        //                .ThenInclude(ds => ds.School)
-
-        //                .ToListAsync();
-
-        //    viewModel.Degree = schools;
-
-
-        //    return View(viewModel);
-        //}
+               
 
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
         // adding matching schools that offer the degree based on the degreeId passed when user clicks 
-        // Find Schools
+        // Find Schools within Degree Index view
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        // GET: Schools with Degree localhost:5001/School/SchoolMatch/
+        // GET: Schools with Degree 
 
         // localhost:5001/School/SchoolMatch?degreeId=2
 
