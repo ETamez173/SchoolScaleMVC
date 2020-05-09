@@ -83,6 +83,7 @@ namespace SchoolScoreMVC.Controllers
                 {
 
                     SchoolName = ds.School.SchoolName,
+                    State = ds.School.State,
                     AnnualCost = ds.AnnualCost.ToString("c"),
                     TotalCost = ds.TotalCost.ToString("c"),
                     SchoolId = ds.SchoolId
@@ -109,17 +110,24 @@ namespace SchoolScoreMVC.Controllers
         // GET: School/Create
         public ActionResult Create()
         {
+
+            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
             return View();
         }
 
         // POST: School/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        //public ActionResult Create(IFormCollection collection)
+             public async Task<IActionResult> Create([Bind("Id,SchoolName,Address,City,State, Zip")] School school)
         {
             try
             {
-                // TODO: Add insert logic here
+                var user = await GetCurrentUserAsync();
+
+                _context.School.Add(school);
+                await _context.SaveChangesAsync();
+
 
                 return RedirectToAction(nameof(Index));
             }

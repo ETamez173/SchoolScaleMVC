@@ -439,3 +439,4 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.genruntimeconfig.cache
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.csprojAssemblyReference.cache
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Loan\Workbench.cshtml.g.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\School\Create.cshtml.g.cs

@@ -24,6 +24,10 @@
                 School
             </th>
             <th>
+                State
+            </th>
+
+            <th>
                 Yearly Cost
             </th>
 
@@ -39,8 +43,8 @@
         {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>*@
             <td>
                 @Html.DisplayFor(modelItem => Model.DegreeName)
             </td>
@@ -48,17 +52,20 @@
                 @Html.DisplayFor(modelItem => item.SchoolName)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.State)
+            </td>
+            <td>
                 @Html.DisplayFor(modelItem => item.AnnualCost)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TotalCost)
             </td>
-          
+
             <td>
 
                 <a asp-action="WorkBench" asp-controller="Loan" asp-route-schoolId="@item.SchoolId">Begin Analysis </a>
 
-           
+
 
             </td>
         </tr>

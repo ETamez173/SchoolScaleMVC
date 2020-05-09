@@ -20,6 +20,9 @@ namespace SchoolScoreMVC.Models.SchoolViewModels
         [Display(Name = "School")]
         public string SchoolName { get; set; }
 
+        [Display(Name = "State")]
+        public string State { get; set; }
+
         [Display(Name = "Yearly Cost")]
         public string AnnualCost { get; set; }
 
