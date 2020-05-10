@@ -86,7 +86,8 @@ namespace SchoolScoreMVC.Controllers
                     State = ds.School.State,
                     AnnualCost = ds.AnnualCost.ToString("c"),
                     TotalCost = ds.TotalCost.ToString("c"),
-                    SchoolId = ds.SchoolId
+                    SchoolId = ds.SchoolId,
+                    DegreeId = ds.DegreeId
 
                 }).ToList();
 
@@ -101,11 +102,32 @@ namespace SchoolScoreMVC.Controllers
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 
-        // GET: School/Details/5
-        public ActionResult Details(int id)
+        //// GET: School/Details/5
+        //public ActionResult Details(int id)
+        //{
+        //    return View();
+        //}
+
+        /// GET: School/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+ 
+            var school = await _context.School
+            
+                .FirstOrDefaultAsync(m => m.Id == id)
+                ;
+            if (school == null)
+            {
+                return NotFound();
+            }
+
+            return View(school);
         }
+
 
         // GET: School/Create
         public ActionResult Create()

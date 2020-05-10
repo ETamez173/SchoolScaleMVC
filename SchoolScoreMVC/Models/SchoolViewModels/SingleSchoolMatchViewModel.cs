@@ -14,6 +14,8 @@ namespace SchoolScoreMVC.Models.SchoolViewModels
 
         public int SchoolId { get; set; }
 
+        public int DegreeId { get; set; }
+
         [Display(Name = "Degree / Program")]
         public string EducationName { get; set; }
 

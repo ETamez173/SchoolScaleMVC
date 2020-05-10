@@ -38,10 +38,24 @@ namespace SchoolScoreMVC.Controllers
             return View(items);
         }
 
-        // GET: Degree/Details/5
-        public ActionResult Details(int id)
+ 
+        /// GET: Degree/Details/5
+        public async Task<IActionResult> Details(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var degree = await _context.Degree
+                .FirstOrDefaultAsync(m => m.Id == id)
+                ;
+            if (degree == null)
+            {
+                return NotFound();
+            }
+
+            return View(degree);
         }
 
         // GET: Degree/Create

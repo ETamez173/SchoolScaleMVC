@@ -51,7 +51,11 @@ namespace SchoolScoreMVC.Models
         public double FutureCareerEarnings { get; set; }
 
         [Display(Name = "Benefits To Costs Ratio")]
+
+
         public int BenefitCostAnalysisRatio { get; set; }
+
+        [Display(Name = "Add To Benefit Analysis")]
         public Boolean FinWorkBenchStep { get; set; }
 
         //public int CustomerId { get; set; }

@@ -45,13 +45,16 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         public double TotalLoanPayments { get; set; }
 
         [Display(Name = "Cash")]
+        [Required(ErrorMessage = "Enter An Amount 0 and up")]
         public double CashPaid { get; set; }
 
         [Display(Name = "Grants")]
+        [Required(ErrorMessage = "Enter An Amount 0 and up")]
         public double Grants { get; set; }
 
 
         [Display(Name = "Scholarships")]
+        [Required(ErrorMessage = "Enter An Amount 0 and up")]
         public double Scholarships { get; set; }
 
         [Display(Name = "Total Amounts Paid")]
@@ -62,6 +65,8 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
         [Display(Name = "Benefits To Costs Ratio")]
         public int BenefitCostAnalysisRatio { get; set; }
+
+        [Display(Name = "Add To Benefit Analysis")]
         public Boolean FinWorkBenchStep { get; set; }
 
         //public int CustomerId { get; set; }

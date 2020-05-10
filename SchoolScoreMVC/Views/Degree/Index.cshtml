@@ -1,4 +1,8 @@
 ﻿@model IEnumerable<SchoolScoreMVC.Models.Degree>
+@*@model IEnumerable<SchoolScoreMVC.Models.DegreeViewModels.DegreeListView>
+@model SchoolScoreMVC.Models.DegreeViewModels.DegreeListView*@
+
+@*SchoolScoreMVC.Models.DegreeViewModels.DegreeListView*@
 
 @{
     ViewData["Title"] = "Index";
@@ -13,8 +17,8 @@
     <thead>
         <tr>
             @*<th>
-                @Html.DisplayNameFor(model => model.Id)
-            </th>*@
+                    @Html.DisplayNameFor(model => model.Id)
+                </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.EducationName)
             </th>
@@ -31,11 +35,12 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
         <tr>
             @*<td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>*@
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.EducationName)
             </td>
@@ -48,12 +53,19 @@
             <td>
                 @Html.DisplayFor(modelItem => item.EarningLow)
             </td>
+
             <td>
-             
+                @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
+                @*@Html.ActionLink("Delete", "Delete", new { id = item.Id }) |*@
+                @*<a asp-action="SchoolMatch" asp-controller="School" asp-route-degreeId="@item.Id">Find Schools </a>*@
+            </td>
+
+            <td>
                 <a asp-action="SchoolMatch" asp-controller="School" asp-route-degreeId="@item.Id">Find Schools </a>
- 
+
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>

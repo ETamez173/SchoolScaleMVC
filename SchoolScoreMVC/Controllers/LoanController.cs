@@ -102,6 +102,7 @@ namespace SchoolScoreMVC.Controllers
                        .FirstOrDefaultAsync(d => d.Id == degreeId);
 
                 viewModel.DegreeId = degree.Id;
+                //viewModel.SchoolId = school.Id;
                 viewModel.DegreeName = degree.EducationName;
 
                 viewModel.Schools = degree.DegreeSchools.Select(ds => new SingleLoanViewModel()
@@ -114,6 +115,21 @@ namespace SchoolScoreMVC.Controllers
 
                 }).ToList();
 
+                var testDefault = new MonthlyPayment();
+                testDefault.DisplayObjectState();
+                Console.WriteLine("\n");
+
+                var real = new MonthlyPayment(10000, 10, 36);
+                real.DisplayObjectState();
+
+                Console.WriteLine("\n");
+                Console.WriteLine("Monthy Payment Amount: {0}", real.MonthlyPaymentAmount());
+                Console.WriteLine("\n");
+                Console.WriteLine("Amount Paid Back: {0}", real.AmountPaidBack());
+                Console.WriteLine("\n");
+                Console.WriteLine("Interest Paid: {0}", real.InterestPaid());
+
+                Console.WriteLine("\n");
 
                 return View(viewModel);
 

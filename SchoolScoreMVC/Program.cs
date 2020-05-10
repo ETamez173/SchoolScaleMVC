@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using SchoolScoreMVC.Models;
 
 namespace SchoolScoreMVC
 {
@@ -14,6 +15,8 @@ namespace SchoolScoreMVC
         public static void Main(string[] args)
         {
             CreateHostBuilder(args).Build().Run();
+
+         
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -22,5 +25,9 @@ namespace SchoolScoreMVC
                 {
                     webBuilder.UseStartup<Startup>();
                 });
+
+
+
+
     }
 }
