@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SchoolScoreMVC.Models.DegreeViewModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,7 +16,7 @@ namespace SchoolScoreMVC.Models
         [Required]
         public int Id { get; set; }
 
-        [Display(Name = "Degree/Program")]
+        [Display(Name = "Degree/ Program")]
         public string EducationName { get; set; }
 
         [Display(Name = "Average")]
@@ -30,5 +31,6 @@ namespace SchoolScoreMVC.Models
         // this is to use the join table called DegreeSchool
         public List<DegreeSchool> DegreeSchools { get; set; }
 
+      
     }
 }

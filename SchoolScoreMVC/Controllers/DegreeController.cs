@@ -10,13 +10,14 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SchoolScoreMVC.Models.DegreeViewModels;
 
 namespace SchoolScoreMVC.Controllers
 {
     public class DegreeController : Controller
     {
 
-           
+
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
 
@@ -38,7 +39,74 @@ namespace SchoolScoreMVC.Controllers
             return View(items);
         }
 
- 
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // GET: Degrees & show currency  
+        //localhost:5001/Degree/Degreelist
+
+
+        public async Task<ActionResult> DegreeList()
+        {
+            var user = await GetCurrentUserAsync();
+
+            // Check if the user is logged in, if they aren't, return 401
+            if (user == null)
+            {
+                return new StatusCodeResult(StatusCodes.Status401Unauthorized);
+            }
+
+            else
+            {
+
+                // build the item as a view model so we can show more information
+                var viewModel = new AllDegreesViewModel();
+
+                var degree = await _context.DegreeSchool
+                     .Include(d => d.Degree)
+                     //.Include(d => d.DegreeSchools)
+                     //.ThenInclude(d => d.Degree)
+                     //.FirstOrDefaultAsync(d => d.Id == degreeId);
+                     .Where(d => d.Id != null).ToListAsync();
+
+                viewModel.Degrees = degree.Select(ds => new SingleDegreeListViewModel()
+                //degree.DegreeSchools.Select(ds => new SingleDegreeListViewModel()
+                {
+
+                    EducationName = ds.Degree.EducationName,
+                    EarningAvg = ds.Degree.EarningAvg.ToString("c"),
+                    EarningHigh = ds.Degree.EarningHigh.ToString("c"),
+                    EarningLow = ds.Degree.EarningLow.ToString("c"),
+                    SchoolId = ds.SchoolId,
+                    DegreeId = ds.Degree.Id
+
+                }).ToList();
+
+
+                return View(viewModel);
+
+            }
+
+        }
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+        // GET: Modal for School Details
+
+
+        public async Task<IActionResult> DetailsModal(int? id)
+        {
+
+            var degree = await _context.Degree
+                .FirstOrDefaultAsync(m => m.Id == id)
+                ;
+            return View(degree);
+        }
+
+
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
         /// GET: Degree/Details/5
         public async Task<IActionResult> Details(int? id)
         {
@@ -58,11 +126,15 @@ namespace SchoolScoreMVC.Controllers
             return View(degree);
         }
 
+
+
+        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
         // GET: Degree/Create
         public IActionResult Create()
         {
             ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
-  
+
             return View();
         }
 
@@ -71,15 +143,15 @@ namespace SchoolScoreMVC.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-      
+
         public async Task<IActionResult> Create([Bind("Id,EducationName,EarningAvg,EarningHigh,EarningLow")] Degree degree)
         {
             try
             {
-             
+
 
                 var user = await GetCurrentUserAsync();
-            
+
                 _context.Degree.Add(degree);
                 await _context.SaveChangesAsync();
 

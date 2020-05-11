@@ -1,20 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
 namespace SchoolScoreMVC.Models.DegreeViewModels
 {
-    public class DegreeListView
+    public class DegreeDetailView
     {
-        [Required]
-        public int Id { get; set; }
+        public int SchoolId { get; set; }
 
-        [Display(Name = "Degree/Program")]
+        public int DegreeId { get; set; }
+
+        [Display(Name = "Degree / Program")]
         public string EducationName { get; set; }
 
         [Display(Name = "Average")]
@@ -26,10 +24,7 @@ namespace SchoolScoreMVC.Models.DegreeViewModels
         [Display(Name = "Low")]
         public string EarningLow { get; set; }
 
-        // this is to use the join table called DegreeSchool
-        public List<DegreeSchool> DegreeSchools
-        {
-            get; set;
-        }
+
+        public IEnumerable<SingleDegreeListViewModel> Degrees { get; set; }
     }
 }

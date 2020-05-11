@@ -1,10 +1,3 @@
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.csproj.CoreCompileInputs.cache
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.MvcApplicationPartsAssemblyInfo.cache
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.RazorAssemblyInfo.cache
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.RazorAssemblyInfo.cs
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.AssemblyInfoInputs.cache
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.AssemblyInfo.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -400,6 +393,13 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.csproj.CoreCompileInputs.cache
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.RazorAssemblyInfo.cache
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.RazorAssemblyInfo.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.AssemblyInfoInputs.cache
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.AssemblyInfo.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.TagHelpers.input.cache
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.TagHelpers.output.cache
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.RazorCoreGenerate.cache
@@ -415,6 +415,7 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewStart.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Degree\Create.cshtml.g.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Degree\DegreeList.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Degree\Details.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Degree\Index.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
@@ -442,3 +443,4 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.pdb
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.genruntimeconfig.cache
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.csprojAssemblyReference.cache
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Degree\DetailsModal.cshtml.g.cs

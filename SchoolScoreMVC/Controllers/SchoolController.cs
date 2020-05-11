@@ -129,6 +129,14 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
+
+  
+
+
+
+
+
+
         // GET: School/Create
         public ActionResult Create()
         {
