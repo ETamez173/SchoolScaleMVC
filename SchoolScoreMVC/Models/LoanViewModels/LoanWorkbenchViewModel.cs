@@ -10,7 +10,11 @@ namespace SchoolScoreMVC.Models.LoanViewModels
     {
         public int DegreeId { get; set; }
 
+        public int SchoolId { get; set; }
+
         public string DegreeName { get; set; }
+
+        public string SchoolName { get; set; }
 
         //public List<School> Schools { get; set; }
 
@@ -18,6 +22,8 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         public IEnumerable<SingleLoanViewModel> Schools { get; set; }
 
 
+        [Display(Name = "Total Cost")]
+        public double TotalCost { get; set; }
 
 
         [Required]
@@ -29,7 +35,6 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         [Display(Name = "Interest Rate%")]
         public int LoanRate { get; set; }
 
-        //should LoanRate be int or double?
 
         [Display(Name = "Loan Months")]
         public int LoanLengthMonths { get; set; }
@@ -69,24 +74,23 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         [Display(Name = "Add To Benefit Analysis")]
         public Boolean FinWorkBenchStep { get; set; }
 
-        //public int CustomerId { get; set; }
-
         [Required]
         public string ApplicationUserId { get; set; }
 
         [Required]
         public ApplicationUser ApplicationUser { get; set; }
-        // Ask Adam if I should remove this !!!!!!
+
+
+      
         // one user can have many loans 
 
         public int DegreeSchoolId { get; set; }
 
-        public DegreeSchool DegreeSchool
-        {
-            get; set;
+        public DegreeSchool DegreeSchool { get; set; }
 
 
 
-        }
+
+
     }
 }

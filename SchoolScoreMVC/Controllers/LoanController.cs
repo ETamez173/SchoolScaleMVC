@@ -50,17 +50,22 @@ namespace SchoolScoreMVC.Controllers
         // GET: Loan/Create
         public ActionResult Create()
         {
+            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
             return View();
         }
 
         // POST: Loan/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        //public ActionResult Create(IFormCollection collection)
+        public async Task<IActionResult> Create([Bind("Id,LoanAmount,LoanRate,LoanLengthMonths,LoanLengthYears,LoanPayment,TotalLoanPayments,CashPaid,Grants,Scholarships,TotalAmountPaid,FutureCareerEarnings, BenefitAnalysisRatio, FinWorkBenchStep,ApplicationUserId, DegreeSchoolId")] Loan loan)
         {
             try
             {
-                // TODO: Add insert logic here
+               
+                var user = await GetCurrentUserAsync();
+                _context.Loan.Add(loan);
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
@@ -76,8 +81,9 @@ namespace SchoolScoreMVC.Controllers
         // Begin Analysis within SchoolMatch view
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-        // GET: Loan/WorkBench?DegreeId=5
-        public async Task<ActionResult> Workbench(int degreeId)
+        // GET: Loan/WorkBench?degreeId=2&schoolId=5   
+        //  Loan/WorkBench?schoolId=5&degreeId=2
+        public async Task<ActionResult> Workbench(int degreeId, int schoolId)
         {
             var user = await GetCurrentUserAsync();
 
@@ -93,27 +99,31 @@ namespace SchoolScoreMVC.Controllers
                 // build the item as a view model so we can show more information
                 var viewModel = new LoanWorkbenchViewModel();
 
-                // Grab the schools
+                // Grab the loans
 
-                var degree = await _context.Degree
+                var degreeschool = await _context.DegreeSchool
+                        .Include(ds => ds.Degree)
+                        .Include(ds => ds.School)
+                       .FirstOrDefaultAsync(ds => ds.DegreeId == degreeId && ds.SchoolId == schoolId);
 
-                       .Include(d => d.DegreeSchools)
-                       .ThenInclude(d => d.School)
-                       .FirstOrDefaultAsync(d => d.Id == degreeId);
+                viewModel.DegreeId = degreeId;
+                viewModel.SchoolId = schoolId;
+                //viewModel.DegreeName = degreeschool.Degree.EducationName;
+                //viewModel.SchoolName = degreeschool.School.SchoolName;
+                //viewModel.TotalCost = degreeschool.TotalCost;
 
-                viewModel.DegreeId = degree.Id;
-                //viewModel.SchoolId = school.Id;
-                viewModel.DegreeName = degree.EducationName;
+            
+                //viewModel.Schools = degreeschool.DegreeSchools.Select(ds => new SingleLoanViewModel()
 
-                viewModel.Schools = degree.DegreeSchools.Select(ds => new SingleLoanViewModel()
-                {
+                //{
 
-                    SchoolName = ds.School.SchoolName,
-                    AnnualCost = ds.AnnualCost.ToString("c"),
-                    TotalCost = ds.TotalCost.ToString("c"),
-                    SchoolId = ds.SchoolId
+                //    EducationName = degreeschool.Degree.EducationName,
+                //    SchoolName = degreeschool.School.SchoolName,
+                //    AnnualCost = degreeschool.AnnualCost.ToString("c"),
+                //    TotalCost = degreeschool.TotalCost.ToString("c"),
+                //    SchoolId = degreeschool.SchoolId
 
-                }).ToList();
+                //}).ToList();
 
                 var testDefault = new MonthlyPayment();
                 testDefault.DisplayObjectState();

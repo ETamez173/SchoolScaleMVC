@@ -28,6 +28,9 @@ namespace SchoolScoreMVC.Controllers
             _userManager = userManager;
         }
 
+
+
+
         // GET: localhost:5001/school
         public async Task<ActionResult> Index()
         //public async Task<ActionResult> Index(string filter)
@@ -73,7 +76,7 @@ namespace SchoolScoreMVC.Controllers
                 var degree = await _context.Degree
 
                        .Include(d => d.DegreeSchools)
-                       .ThenInclude(d => d.School)
+                       .ThenInclude(ds => ds.School)
                        .FirstOrDefaultAsync(d => d.Id == degreeId);
 
                 viewModel.DegreeId = degree.Id;

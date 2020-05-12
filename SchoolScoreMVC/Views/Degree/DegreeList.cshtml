@@ -1,9 +1,9 @@
-﻿@*@model IEnumerable<SchoolScoreMVC.Models.Degree>*@
+﻿@model IEnumerable<SchoolScoreMVC.Models.Degree>
 
 @*@model SchoolScoreMVC.Models.DegreeViewModels.SingleDegreeListViewModel*@
 @*@model IEnumerable<SchoolScoreMVC.Models.DegreeViewModels.SingleDegreeListViewModel>*@
 @*@model IEnumerable<SchoolScoreMVC.Models.DegreeViewModels.AllDegreesViewModel>*@
-@model SchoolScoreMVC.Models.DegreeViewModels.AllDegreesViewModel
+@*@model SchoolScoreMVC.Models.DegreeViewModels.AllDegreesViewModel*@
 
 @{
     ViewData["Title"] = "Degree List";
@@ -38,7 +38,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.Degrees)
+        @foreach (var item in Model)
         {
         <tr>
             @*<td>
@@ -48,18 +48,21 @@
                 @Html.DisplayFor(modelItem => item.EducationName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EarningAvg)
+                @*@Html.DisplayFor(modelItem => item.EarningAvg.ToString("c"))*@
+                @item.EarningAvg.ToString("c")
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EarningHigh)
+                @*@Html.DisplayFor(modelItem => item.EarningHigh.ToString("c"))*@
+                @item.EarningHigh.ToString("c")
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.EarningLow)
-            </td>
+        <td>
+            @*@Html.DisplayFor(modelItem => item.EarningLow.ToString("c"))*@
+            @item.EarningLow.ToString("c")
+        </td>
             <td>
 
 
-                @Html.ActionLink("Details", "Details", new { id = item.DegreeId })
+                @Html.ActionLink("Details", "Details", new { id = item.Id })
 
                 @*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*@
 
@@ -71,7 +74,7 @@
             </td>
 
             <td>
-                <a asp-action="SchoolMatch" asp-controller="School" asp-route-degreeId="@item.DegreeId">Find Schools </a>
+                <a asp-action="SchoolMatch" asp-controller="School" asp-route-degreeId="@item.Id">Find Schools </a>
 
             </td>
         </tr>

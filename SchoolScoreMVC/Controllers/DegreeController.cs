@@ -26,6 +26,8 @@ namespace SchoolScoreMVC.Controllers
         {
             _context = context;
             _userManager = userManager;
+
+           
         }
         // GET: localhost:5001/degree
         public async Task<ActionResult> Index()
@@ -60,30 +62,13 @@ namespace SchoolScoreMVC.Controllers
             {
 
                 // build the item as a view model so we can show more information
-                var viewModel = new AllDegreesViewModel();
+      
 
-                var degree = await _context.DegreeSchool
-                     .Include(d => d.Degree)
-                     //.Include(d => d.DegreeSchools)
-                     //.ThenInclude(d => d.Degree)
-                     //.FirstOrDefaultAsync(d => d.Id == degreeId);
-                     .Where(d => d.Id != null).ToListAsync();
-
-                viewModel.Degrees = degree.Select(ds => new SingleDegreeListViewModel()
-                //degree.DegreeSchools.Select(ds => new SingleDegreeListViewModel()
-                {
-
-                    EducationName = ds.Degree.EducationName,
-                    EarningAvg = ds.Degree.EarningAvg.ToString("c"),
-                    EarningHigh = ds.Degree.EarningHigh.ToString("c"),
-                    EarningLow = ds.Degree.EarningLow.ToString("c"),
-                    SchoolId = ds.SchoolId,
-                    DegreeId = ds.Degree.Id
-
-                }).ToList();
+                var degrees = await _context.Degree.ToListAsync();
+         
 
 
-                return View(viewModel);
+                return View(degrees);
 
             }
 

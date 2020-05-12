@@ -49,9 +49,14 @@
     </dl>
 </div>
 <div>
-    @*@Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |*@
-    <a asp-action="Index">Back to List</a>
 
-    @*need to find method to return to the SchoolMatch I was on when I clicked details for the
-    school*@
+    @*need to find method to return to the SchoolMatch I was on when I clicked details for the school*@
+
+
+    <a asp-action="Index">Back to List</a>
+    @*<a asp-action="WorkBench" asp-route-previous="@Model.ReturnUrl"></a>*@
+    @*<a asp-action="Login" asp-route-previous="@Model.ReturnUrl"></a>*@
+    @*<a asp-action="SchoolMatch">Back to List</a>*@
+    @*<a asp-action="SchoolMatch" asp-route-previous="SchoolMatch" asp-route-id="@Model.Id">Back to List</a>*@
+
 </div>

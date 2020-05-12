@@ -18,6 +18,7 @@ namespace SchoolScoreMVC.Models.SchoolViewModels
 
         //public List<School> Schools { get; set; }
 
+        public string ReturnUrl { get; set; }
 
         public IEnumerable<SingleSchoolMatchViewModel> Schools { get; set; }
     }
