@@ -50,8 +50,8 @@
         </div>*@
             <div class="form-group">
                 <label asp-for="LoanLengthYears" class="control-label"></label>
-                @*<input asp-for="LoanLengthYears" class="form-control" />*@
-                <select id="loan_yrs">
+                <input asp-for="LoanLengthYears" class="form-control" />
+                @*<select id="loan_yrs">
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -79,15 +79,15 @@
                     <option value="27">28</option>
                     <option value="29">29</option>
                     <option value="30">30</option>
-                </select>
+                </select>*@
                 <span asp-validation-for="LoanLengthYears" class="text-danger"></span>
             </div>
 
 
             <div class="form-group">
                 <label asp-for="LoanRate" class="control-label"></label>
-                @*<input asp-for="LoanRate" class="form-control" />*@
-                <select id="loan_rate">
+                <input asp-for="LoanRate" class="form-control" />
+                @*<select id="loan_rate">
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -116,7 +116,7 @@
                     <option value="27">28</option>
                     <option value="29">29</option>
                     <option value="30">30</option>
-                </select>
+                </select>*@
                 <span asp-validation-for="LoanRate" class="text-danger"></span>
             </div>
 
@@ -126,37 +126,13 @@
                 <input asp-for="LoanPayment" class="form-control" disabled />
                 <span asp-validation-for="LoanPayment" class="text-danger"></span>
             </div>
-            @*<div class="form-group">
-                <label asp-for="TotalLoanPayments" class="control-label"></label>
-                <input asp-for="TotalLoanPayments" class="form-control" disabled />
-                <span asp-validation-for="TotalLoanPayments" class="text-danger"></span>
-            </div>*@
-
-            @*<div class="form-group">
-            <label asp-for="TotalAmountPaid" class="control-label"></label>
-            <input asp-for="TotalAmountPaid" class="form-control" disabled/>
-            <span asp-validation-for="TotalAmountPaid" class="text-danger"></span>
-        </div>*@
-            @*<div class="form-group">
-            <label asp-for="FutureCareerEarnings" class="control-label"></label>
-            <input asp-for="FutureCareerEarnings" class="form-control" disabled/>
-            <span asp-validation-for="FutureCareerEarnings" class="text-danger"></span>
-        </div>*@
-            @*<div class="form-group">
-            <label asp-for="BenefitCostAnalysisRatio" class="control-label"></label>
-            <input asp-for="BenefitCostAnalysisRatio" class="form-control" disabled/>
-            <span asp-validation-for="BenefitCostAnalysisRatio" class="text-danger"></span>
-        </div>*@
+           
             <div class="form-group form-check">
                 <label class="form-check-label">
                     <input class="form-check-input" asp-for="FinWorkBenchStep" /> @Html.DisplayNameFor(model => model.FinWorkBenchStep)
                 </label>
             </div>
-            @*<div class="form-group">
-            <label asp-for="ApplicationUserId" class="control-label"></label>
-            <input asp-for="ApplicationUserId" class="form-control" disabled/>
-            <span asp-validation-for="ApplicationUserId" class="text-danger"></span>
-        </div>*@
+          
             <div class="form-group">
                 <label asp-for="DegreeSchoolId" class="control-label"></label>
                 <input asp-for="DegreeSchoolId" class="form-control" disabled />

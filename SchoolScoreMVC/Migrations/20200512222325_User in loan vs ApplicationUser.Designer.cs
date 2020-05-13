@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SchoolScoreMVC.Data;
 
 namespace SchoolScoreMVC.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200512222325_User in loan vs ApplicationUser")]
+    partial class UserinloanvsApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -997,7 +999,7 @@ namespace SchoolScoreMVC.Migrations
 
             modelBuilder.Entity("SchoolScoreMVC.Models.Loan", b =>
                 {
-                    b.HasOne("SchoolScoreMVC.Models.ApplicationUser", "ApplicationUser")
+                    b.HasOne("SchoolScoreMVC.Models.ApplicationUser", "User")
                         .WithMany("Loans")
                         .HasForeignKey("ApplicationUserId")
                         .OnDelete(DeleteBehavior.Cascade)

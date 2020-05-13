@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using SchoolScoreMVC.Data;
 using SchoolScoreMVC.Models;
-//using SchoolScoreMVC.Models.DegreeViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -29,7 +28,9 @@ namespace SchoolScoreMVC.Controllers
             _userManager = userManager;
         }
         // GET: localhost:5001/loan
-        public async Task<ActionResult> Index(string filter)
+        //public async Task<ActionResult> Index(string filter)
+        public async Task<IActionResult> BCAIndex(LoanBenefitCostAnalysisViewModel bcaViewModel)
+
         {
 
             var user = await GetCurrentUserAsync();
@@ -47,42 +48,132 @@ namespace SchoolScoreMVC.Controllers
             return View();
         }
 
-        // GET: Loan/Create
-        public ActionResult Create()
+        //GET: Loan/Create
+         public ActionResult Create()
         {
             ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
             return View();
         }
 
-        // POST: Loan/Create
+
+
+        //POST: Loan/Create
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+
+
+        // public async Task<IActionResult> CreateLoan([Bind("LoanAmount,LoanRate,LoanLengthMonths,LoanLengthYears,LoanPayment,TotalLoanPayments,CashPaid,Grants,Scholarships,TotalAmountPaid,FutureCareerEarnings, BenefitCostAnalysisRatio, FinWorkBenchStep,ApplicationUserId, DegreeSchoolId")] Loan loan)
+        //{
+        //    try
+        //    {
+
+        //        var user = await GetCurrentUserAsync();
+        //        loan.ApplicationUserId = user.Id;
+
+        //        _context.Loan.Add(loan);
+        //        await _context.SaveChangesAsync();
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
+
+
+        //GET: Loan/Create
+        public ActionResult CreateLoan()
+        {
+            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
+            return View();
+        }
+
+        //// POST: Loan/Create
+        ////Loan/CreateLoan?degreeId=2&schoolId=5
+      
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create(IFormCollection collection)
-        public async Task<IActionResult> Create([Bind("Id,LoanAmount,LoanRate,LoanLengthMonths,LoanLengthYears,LoanPayment,TotalLoanPayments,CashPaid,Grants,Scholarships,TotalAmountPaid,FutureCareerEarnings, BenefitAnalysisRatio, FinWorkBenchStep,ApplicationUserId, DegreeSchoolId")] Loan loan)
+
+        public async Task<IActionResult> CreateLoan(int degreeId, int schoolId, LoanWorkbenchViewModel loanViewModel)
+               //public async Task<ActionResult> CreateLoan(LoanWorkbenchViewModel loanViewModel)
         {
             try
             {
-               
+
                 var user = await GetCurrentUserAsync();
+
+
+                //var degreeschool = await _context.DegreeSchool
+                //    .Include(ds => ds.Degree)
+                //    .Include(ds => ds.School)
+                //    .Include(ds => ds.Id)
+                //   .FirstOrDefaultAsync(ds => ds.DegreeId == degreeId && ds.SchoolId == schoolId);
+
+
+                ////loanViewModel.DegreeId = degreeId;
+                ////loanViewModel.SchoolId = schoolId;
+
+                //loanViewModel.SchoolName = degreeschool.School.SchoolName;
+                //loanViewModel.DegreeName = degreeschool.Degree.EducationName;
+
+                //loanViewModel.Schools = degree.DegreeSchools.Select(ds => new SingleSchoolMatchViewModel()
+                //{
+
+                //    SchoolName = ds.School.SchoolName,
+                //    State = ds.School.State,
+                //    AnnualCost = ds.AnnualCost.ToString("c"),
+                //    TotalCost = ds.TotalCost.ToString("c"),
+                //    SchoolId = ds.SchoolId,
+                //    DegreeId = ds.DegreeId
+
+                //}).ToList();
+
+                var loan = new Loan()
+
+
+                {
+                 
+                    TotalSchoolCost = loanViewModel.TotalSchoolCost,
+                    LoanRate = loanViewModel.LoanRate,
+                    LoanLengthYears = loanViewModel.LoanLengthYears,
+                    //LoanPayment = loanViewModel.LoanPayment,
+                    CashPaid = loanViewModel.CashPaid,
+                    Grants = loanViewModel.Grants,
+                    Scholarships = loanViewModel.Scholarships,
+                    FinWorkBenchStep = loanViewModel.FinWorkBenchStep,
+                    //DegreeSchoolId = degreeschool.Id,
+                    
+                    //loanViewModel.SchoolName = degreeschool.School.SchoolName;
+
+
+                };
+
+
+            
+
                 _context.Loan.Add(loan);
                 await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
-            catch
+            catch (Exception ex)
             {
                 return View();
             }
         }
 
 
+
+
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // Editing a Loan with Workbench for the school-degree based on the degreeId passed when user clicks 
-        // Begin Analysis within SchoolMatch view
+        // Editing a Loan with Workbench for the school-degree based on the degreeId & 
+        // schoolId passed when user clicks Begin Analysis within SchoolMatch view
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         // GET: Loan/WorkBench?degreeId=2&schoolId=5   
-        //  Loan/WorkBench?schoolId=5&degreeId=2
+        //      Loan/WorkBench?schoolId=5&degreeId=2
         public async Task<ActionResult> Workbench(int degreeId, int schoolId)
         {
             var user = await GetCurrentUserAsync();
@@ -108,11 +199,12 @@ namespace SchoolScoreMVC.Controllers
 
                 viewModel.DegreeId = degreeId;
                 viewModel.SchoolId = schoolId;
-                //viewModel.DegreeName = degreeschool.Degree.EducationName;
-                //viewModel.SchoolName = degreeschool.School.SchoolName;
-                //viewModel.TotalCost = degreeschool.TotalCost;
+                viewModel.DegreeName = degreeschool.Degree.EducationName;
+                viewModel.SchoolName = degreeschool.School.SchoolName;
+                viewModel.TotalSchoolCost = degreeschool.TotalCost;
+                viewModel.DegreeSchoolId = degreeschool.Id;
 
-            
+
                 //viewModel.Schools = degreeschool.DegreeSchools.Select(ds => new SingleLoanViewModel()
 
                 //{
@@ -124,6 +216,11 @@ namespace SchoolScoreMVC.Controllers
                 //    SchoolId = degreeschool.SchoolId
 
                 //}).ToList();
+
+                //////  //////  //////  //////  //////  //////  //////  ////// 
+                ////// Loan Payment Code here???
+                //////  //////  //////  //////  //////  //////  //////  ////// 
+                ///
 
                 var testDefault = new MonthlyPayment();
                 testDefault.DisplayObjectState();
@@ -140,6 +237,10 @@ namespace SchoolScoreMVC.Controllers
                 Console.WriteLine("Interest Paid: {0}", real.InterestPaid());
 
                 Console.WriteLine("\n");
+                //////  //////  //////  //////  //////  //////  //////  ////// 
+                // Loan Payment Code here???
+                //////  //////  //////  //////  //////  //////  //////  ////// 
+
 
                 return View(viewModel);
 

@@ -23,7 +23,7 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
 
         [Display(Name = "Total Cost")]
-        public double TotalCost { get; set; }
+        public double TotalSchoolCost { get; set; }
 
 
         [Required]
@@ -49,17 +49,20 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         [Display(Name = "Total Loan Payments")]
         public double TotalLoanPayments { get; set; }
 
-        [Display(Name = "Cash")]
+        [Display(Name = "Your Contribution")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
+        [DataType(DataType.Currency)]
         public double CashPaid { get; set; }
 
-        [Display(Name = "Grants")]
+        [Display(Name = "Available Grants")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
+        [DataType(DataType.Currency)]
         public double Grants { get; set; }
 
 
-        [Display(Name = "Scholarships")]
+        [Display(Name = "Available Scholarships")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
+        [DataType(DataType.Currency)]
         public double Scholarships { get; set; }
 
         [Display(Name = "Total Amounts Paid")]
@@ -77,8 +80,8 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         [Required]
         public string ApplicationUserId { get; set; }
 
-        [Required]
-        public ApplicationUser ApplicationUser { get; set; }
+        //[Required]
+        public ApplicationUser User { get; set; }
 
 
       
