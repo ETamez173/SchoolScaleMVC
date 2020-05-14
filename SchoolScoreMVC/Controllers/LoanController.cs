@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SchoolScoreMVC.Models.SchoolViewModels;
 using SchoolScoreMVC.Models.LoanViewModels;
+using SchoolScoreMVC.Migrations;
 
 namespace SchoolScoreMVC.Controllers
 {
@@ -28,18 +29,34 @@ namespace SchoolScoreMVC.Controllers
             _userManager = userManager;
         }
         // GET: localhost:5001/loan
-        //public async Task<ActionResult> Index(string filter)
+
         public async Task<IActionResult> BCAIndex(LoanBenefitCostAnalysisViewModel bcaViewModel)
+        //public async Task<IActionResult> BCAIndex(LoanBenefitCostAnalysisViewModel LoanBenefitCostAnalysisViewModel)
+     
+        {
+
+            var user = await GetCurrentUserAsync();
+            var items = await _context.Loan
+        .Where(l => l.ApplicationUserId == user.Id)
+                .ToListAsync();
+
+            return View(items);
+        }
+
+        // GET: localhost:5001/loan
+        public async Task<ActionResult> Index(string filter)
+        //public async Task<IActionResult> BCAIndex(LoanBenefitCostAnalysisViewModel bcaViewModel)
 
         {
 
             var user = await GetCurrentUserAsync();
             var items = await _context.Loan
-       
+                .Where(l => l.ApplicationUserId == user.Id)
                 .ToListAsync();
 
             return View(items);
         }
+
 
 
         // GET: Loan/Details/5
@@ -57,106 +74,100 @@ namespace SchoolScoreMVC.Controllers
 
 
 
-        //POST: Loan/Create
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-
-
-        // public async Task<IActionResult> CreateLoan([Bind("LoanAmount,LoanRate,LoanLengthMonths,LoanLengthYears,LoanPayment,TotalLoanPayments,CashPaid,Grants,Scholarships,TotalAmountPaid,FutureCareerEarnings, BenefitCostAnalysisRatio, FinWorkBenchStep,ApplicationUserId, DegreeSchoolId")] Loan loan)
-        //{
-        //    try
-        //    {
-
-        //        var user = await GetCurrentUserAsync();
-        //        loan.ApplicationUserId = user.Id;
-
-        //        _context.Loan.Add(loan);
-        //        await _context.SaveChangesAsync();
-
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-
-
-        //GET: Loan/Create
-        public ActionResult CreateLoan()
+        //GET: Loan/CreateLoan
+        public ActionResult CreateLoan(int degreeId, int schoolId)
         {
-            ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
-            return View();
+
+
+            var LoanWorkbenchViewModel = new LoanWorkbenchViewModel()
+            {
+                SchoolId = schoolId,
+                DegreeId = degreeId
+
+            };
+
+            return View(LoanWorkbenchViewModel);
         }
 
-        //// POST: Loan/Create
+        //// POST: Loan/CreateLoan
         ////Loan/CreateLoan?degreeId=2&schoolId=5
       
         [HttpPost]
         [ValidateAntiForgeryToken]
 
         public async Task<IActionResult> CreateLoan(int degreeId, int schoolId, LoanWorkbenchViewModel loanViewModel)
-               //public async Task<ActionResult> CreateLoan(LoanWorkbenchViewModel loanViewModel)
+
+        //public async Task<ActionResult> CreateLoan(LoanWorkbenchViewModel loanViewModel)
         {
             try
             {
 
+                var viewModel = new LoanWorkbenchViewModel();
+
+
+
                 var user = await GetCurrentUserAsync();
+               
+
+                var degreeschool = await _context.DegreeSchool
+                   .Include(ds => ds.Degree)
+                   .Include(ds => ds.School)
+                   .FirstOrDefaultAsync(ds => ds.DegreeId == loanViewModel.DegreeId && ds.SchoolId == loanViewModel.SchoolId);
+                //=============================================================================================
 
 
-                //var degreeschool = await _context.DegreeSchool
-                //    .Include(ds => ds.Degree)
-                //    .Include(ds => ds.School)
-                //    .Include(ds => ds.Id)
-                //   .FirstOrDefaultAsync(ds => ds.DegreeId == degreeId && ds.SchoolId == schoolId);
 
-
-                ////loanViewModel.DegreeId = degreeId;
-                ////loanViewModel.SchoolId = schoolId;
-
-                //loanViewModel.SchoolName = degreeschool.School.SchoolName;
                 //loanViewModel.DegreeName = degreeschool.Degree.EducationName;
+                //loanViewModel.SchoolName = degreeschool.School.SchoolName;
 
-                //loanViewModel.Schools = degree.DegreeSchools.Select(ds => new SingleSchoolMatchViewModel()
-                //{
 
-                //    SchoolName = ds.School.SchoolName,
-                //    State = ds.School.State,
-                //    AnnualCost = ds.AnnualCost.ToString("c"),
-                //    TotalCost = ds.TotalCost.ToString("c"),
-                //    SchoolId = ds.SchoolId,
-                //    DegreeId = ds.DegreeId
+                //=============================================================================================
+                var totalSchoolCost = degreeschool.TotalCost;
+                var futureCareerEarnings = (degreeschool.Degree.EarningAvg * 20);
 
-                //}).ToList();
+
+                // Define variables to help calculate the loan payments
+                var loanAmount = (totalSchoolCost - (loanViewModel.CashPaid + loanViewModel.Grants + loanViewModel.Scholarships));
+                var rateOfInterest = (loanViewModel.LoanRate / 100 ) / 12;
+                var numberOfPayments = loanViewModel.LoanLengthYears * 12;
+
+                var loanPayment = (loanAmount * rateOfInterest) / (1 - Math.Pow(1 + rateOfInterest, numberOfPayments * -1));
+
+                var totalLoanPayments = loanPayment * numberOfPayments;
+                var totalCashGrantScholarships = loanViewModel.CashPaid + loanViewModel.Grants + loanViewModel.Scholarships;
+                var totalAmountPaid = totalLoanPayments + totalCashGrantScholarships;
+              
+                var benefitCostRatio = futureCareerEarnings / totalAmountPaid;
 
                 var loan = new Loan()
-
-
+      
+               
                 {
-                 
-                    TotalSchoolCost = loanViewModel.TotalSchoolCost,
-                    LoanRate = loanViewModel.LoanRate,
-                    LoanLengthYears = loanViewModel.LoanLengthYears,
-                    //LoanPayment = loanViewModel.LoanPayment,
+                    FutureCareerEarnings = futureCareerEarnings,
+                    TotalSchoolCost = totalSchoolCost,
                     CashPaid = loanViewModel.CashPaid,
                     Grants = loanViewModel.Grants,
                     Scholarships = loanViewModel.Scholarships,
+                    LoanAmount = loanAmount,
+                    LoanRate = loanViewModel.LoanRate,
+                    LoanLengthYears = loanViewModel.LoanLengthYears,
+                    LoanLengthMonths = loanViewModel.LoanLengthYears * 12,
+                    LoanPayment = loanPayment,
                     FinWorkBenchStep = loanViewModel.FinWorkBenchStep,
-                    //DegreeSchoolId = degreeschool.Id,
-                    
-                    //loanViewModel.SchoolName = degreeschool.School.SchoolName;
-
+                    ApplicationUserId = user.Id,
+                    DegreeSchoolId = degreeschool.Id,
+                    TotalLoanPayments = totalLoanPayments,
+                    TotalAmountPaid = totalAmountPaid,
+                    BenefitCostAnalysisRatio = Convert.ToInt32(benefitCostRatio)
 
                 };
 
-
-            
+                 
 
                 _context.Loan.Add(loan);
                 await _context.SaveChangesAsync();
 
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(BCAIndex));
             }
             catch (Exception ex)
             {
@@ -203,43 +214,6 @@ namespace SchoolScoreMVC.Controllers
                 viewModel.SchoolName = degreeschool.School.SchoolName;
                 viewModel.TotalSchoolCost = degreeschool.TotalCost;
                 viewModel.DegreeSchoolId = degreeschool.Id;
-
-
-                //viewModel.Schools = degreeschool.DegreeSchools.Select(ds => new SingleLoanViewModel()
-
-                //{
-
-                //    EducationName = degreeschool.Degree.EducationName,
-                //    SchoolName = degreeschool.School.SchoolName,
-                //    AnnualCost = degreeschool.AnnualCost.ToString("c"),
-                //    TotalCost = degreeschool.TotalCost.ToString("c"),
-                //    SchoolId = degreeschool.SchoolId
-
-                //}).ToList();
-
-                //////  //////  //////  //////  //////  //////  //////  ////// 
-                ////// Loan Payment Code here???
-                //////  //////  //////  //////  //////  //////  //////  ////// 
-                ///
-
-                var testDefault = new MonthlyPayment();
-                testDefault.DisplayObjectState();
-                Console.WriteLine("\n");
-
-                var real = new MonthlyPayment(10000, 10, 36);
-                real.DisplayObjectState();
-
-                Console.WriteLine("\n");
-                Console.WriteLine("Monthy Payment Amount: {0}", real.MonthlyPaymentAmount());
-                Console.WriteLine("\n");
-                Console.WriteLine("Amount Paid Back: {0}", real.AmountPaidBack());
-                Console.WriteLine("\n");
-                Console.WriteLine("Interest Paid: {0}", real.InterestPaid());
-
-                Console.WriteLine("\n");
-                //////  //////  //////  //////  //////  //////  //////  ////// 
-                // Loan Payment Code here???
-                //////  //////  //////  //////  //////  //////  //////  ////// 
 
 
                 return View(viewModel);
@@ -290,27 +264,50 @@ namespace SchoolScoreMVC.Controllers
         //}
 
         // GET: Loan/Delete/5
-        public ActionResult Delete(int id)
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
+
+        //POST: Loan/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Delete(int id, IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //    TODO: Add delete logic here
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
+
+        public async Task<IActionResult> Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var loan = await _context.Loan
+               .FirstOrDefaultAsync(l => l.Id == id);
+            if (loan == null)
+            {
+                return NotFound();
+            }
+
+            return View(loan);
         }
 
-        // POST: Loan/Delete/5
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
-        {
-            try
-            {
-                // TODO: Add delete logic here
 
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
-        }
+
+
+
         // vid part 9 at 22.40 min pt
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }

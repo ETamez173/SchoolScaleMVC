@@ -33,20 +33,20 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         public double LoanAmount { get; set; }
 
         [Display(Name = "Interest Rate%")]
-        public int LoanRate { get; set; }
+        public Double LoanRate { get; set; }
 
 
         [Display(Name = "Loan Months")]
         public int LoanLengthMonths { get; set; }
 
 
-        [Display(Name = "Loan Years")]
+        [Display(Name = "Loan Period")]
         public int LoanLengthYears { get; set; }
 
-        [Display(Name = "Loan Payment")]
+        [Display(Name = "Monthly Payment")]
         public double LoanPayment { get; set; }
 
-        [Display(Name = "Total Loan Payments")]
+        [Display(Name = "Total Loan Principal & Interest Repaid")]
         public double TotalLoanPayments { get; set; }
 
         [Display(Name = "Your Contribution")]
@@ -92,7 +92,8 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         public DegreeSchool DegreeSchool { get; set; }
 
 
-
+        [Display(Name = "Notes")]
+        public string Notes { get; set; }
 
 
     }

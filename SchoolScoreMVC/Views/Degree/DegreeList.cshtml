@@ -59,24 +59,79 @@
             @*@Html.DisplayFor(modelItem => item.EarningLow.ToString("c"))*@
             @item.EarningLow.ToString("c")
         </td>
-            <td>
+        <td>
 
 
-                @Html.ActionLink("Details", "Details", new { id = item.Id })
 
-                @*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*@
+        </td>
+
+        <td>
 
 
-                @*<button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>*@
+            <div class="container">
+                @*<h2>Modal Example</h2>*@
+                <!-- Trigger the modal with a button -->
+               
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
 
-                @*++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++*@
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            <div class="modal-header">
 
-            </td>
+                                <h3 class="modal-title">School Details</h3>
+                                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Ranked # 4 out of 20 Fasted Growing Jobs by SomeExpertDudes Magazine.</p>
+                                <dl class="row">
+                                    @*<dt class="col-sm-2">
+                                    @Html.DisplayNameFor(model => model.Id)
+                                </dt>*@
+                                    @*<dd class="col-sm-10">
+                                    @Html.DisplayFor(model => model.Id)
+                                </dd>*@
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.EducationName)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => item.EducationName)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.EarningAvg)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => item.EarningAvg)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.EarningHigh)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => item.EarningHigh)
+                                    </dd>
+                                    <dt class="col-sm-2">
+                                        @Html.DisplayNameFor(model => model.EarningLow)
+                                    </dt>
+                                    <dd class="col-sm-10">
+                                        @Html.DisplayFor(model => item.EarningLow)
+                                    </dd>
+                                </dl>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
 
-            <td>
-                <a asp-action="SchoolMatch" asp-controller="School" asp-route-degreeId="@item.Id">Find Schools </a>
+                    </div>
+                </div>
 
-            </td>
+            </div>
+
+            <a data-toggle="modal" data-target="#myModal">Details</a>
+            <a asp-action="SchoolMatch" asp-controller="School" asp-route-degreeId="@item.Id">Find Schools </a>
+
+        </td>
         </tr>
         }
     </tbody>

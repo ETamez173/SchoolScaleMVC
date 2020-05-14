@@ -1,0 +1,151 @@
+﻿@model SchoolScoreMVC.Models.Loan
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Benefit Cost Analysis</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.BenefitCostAnalysisRatio)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.BenefitCostAnalysisRatio)
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FutureCareerEarnings)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.FutureCareerEarnings)*@
+            @Model.FutureCareerEarnings.ToString("c")
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalSchoolCost)
+
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.TotalSchoolCost)*@
+            @Model.TotalSchoolCost.ToString("c")
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CashPaid)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.CashPaid)*@
+            @Model.CashPaid.ToString("c")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Grants)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.Grants)*@
+            @Model.Grants.ToString("c")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Scholarships)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.Scholarships)*@
+            @Model.Scholarships.ToString("c")
+        </dd>
+
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoanAmount)
+
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.LoanAmount)*@
+            @Model.LoanAmount.ToString("c")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoanRate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LoanRate)
+
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoanLengthMonths)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LoanLengthMonths)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoanLengthYears)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LoanLengthYears)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LoanPayment)
+
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.LoanPayment)*@
+
+            @Model.LoanPayment.ToString("c")
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalLoanPayments)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.TotalLoanPayments)*@
+            @Model.TotalLoanPayments.ToString("c")
+        </dd>
+
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.TotalAmountPaid)
+        </dt>
+        <dd class="col-sm-10">
+            @*@Html.DisplayFor(model => model.TotalAmountPaid)*@
+            @Model.TotalAmountPaid.ToString("c")
+        </dd>
+
+
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FinWorkBenchStep)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FinWorkBenchStep)
+        </dd>*@
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ApplicationUserId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ApplicationUserId)
+        </dd>*@
+        @*<dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DegreeSchoolId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DegreeSchoolId)
+        </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="submit" value="Delete" class="btn btn-danger" /> |
+        <a asp-action="BCAIndex">Back to List</a>
+    </form>
+</div>

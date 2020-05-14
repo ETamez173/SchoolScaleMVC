@@ -93,7 +93,8 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         public DegreeSchool DegreeSchool { get; set; }
 
 
-
+        [Display(Name = "Notes")]
+        public string Notes { get; set; }
 
     }
 }

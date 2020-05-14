@@ -52,6 +52,13 @@
                     @*@Model.TotalSchoolCost.ToString("c")*@
                     <p> $TOTAL COST HERE</p>
                 </td>
+
+                <input asp-for="DegreeId" type="hidden" />
+
+                <input asp-for="SchoolId" type="hidden" />
+
+                <input asp-for="DegreeSchoolId" type="hidden" />
+
                 <td>
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                     @*<div class="form-group">
@@ -102,6 +109,7 @@
                     <div class="form-group">
                         <label asp-for="LoanLengthYears" class="control-label"></label>
                         <input asp-for="LoanLengthYears" class="form-control" />
+                     
                         <span asp-validation-for="LoanLengthYears" class="text-danger"></span>
                     </div>
                 </td>
@@ -109,22 +117,23 @@
                     <div class="form-group">
                         <label asp-for="LoanRate" class="control-label"></label>
                         <input asp-for="LoanRate" class="form-control" />
+                        
                         <span asp-validation-for="LoanRate" class="text-danger"></span>
                     </div>
                 </td>
                 <td>
-                    <div class="form-group">
+                    @*<div class="form-group">
                         <label asp-for="LoanPayment" class="control-label"></label>
                         <input asp-for="LoanPayment" class="form-control" disabled />
                         <span asp-validation-for="LoanPayment" class="text-danger"></span>
-                    </div>
+                    </div>*@
                 </td>
                 <td>
-                    <div class="form-group form-check">
+                    @*<div class="form-group form-check">
                         <label class="form-check-label">
                             <input class="form-check-input" asp-for="FinWorkBenchStep" /> @Html.DisplayNameFor(model => model.FinWorkBenchStep)
                         </label>
-                    </div>
+                    </div>*@
                 </td>
                 <td>
 
@@ -166,7 +175,7 @@
                             <span asp-validation-for="DegreeSchoolId" class="text-danger"></span>
                         </div>*@
                     <div class="form-group">
-                        <input type="submit" value="CreateLoan" class="btn btn-primary" />
+                        <input type="submit" value="Crunch Numbers" class="btn btn-primary" />
                     </div>
                 </td>
                 <td>
