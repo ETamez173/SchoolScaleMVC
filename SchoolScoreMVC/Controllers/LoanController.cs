@@ -30,21 +30,27 @@ namespace SchoolScoreMVC.Controllers
         }
         // GET: localhost:5001/loan
 
-        public async Task<IActionResult> BCAIndex(LoanBenefitCostAnalysisViewModel bcaViewModel)
-            
+        public async Task<IActionResult> BCAIndex()
+            //public async Task<IActionResult> BCAIndex(LoanBenefitCostAnalysisViewModel bcaViewModel)
         {
-
+           
             var user = await GetCurrentUserAsync();
             var items = await _context.Loan
-        .Where(l => l.ApplicationUserId == user.Id)
+                .Include(l => l.DegreeSchool)
+                .ThenInclude(ds => ds.Degree)
+                .Include(l => l.DegreeSchool)
+                .ThenInclude(ds => ds.School)
+                .Where(l => l.ApplicationUserId == user.Id)
+                
                 .ToListAsync();
 
-            return View(items);
+
+                      return View(items);
         }
 
         // GET: localhost:5001/loan
         public async Task<ActionResult> Index(string filter)
-      
+
 
         {
 
@@ -64,7 +70,7 @@ namespace SchoolScoreMVC.Controllers
         }
 
         //GET: Loan/Create
-         public ActionResult Create()
+        public ActionResult Create()
         {
             ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
             return View();
@@ -89,7 +95,7 @@ namespace SchoolScoreMVC.Controllers
 
         //// POST: Loan/CreateLoan
         ////Loan/CreateLoan?degreeId=2&schoolId=5
-      
+
         [HttpPost]
         [ValidateAntiForgeryToken]
 
@@ -106,26 +112,30 @@ namespace SchoolScoreMVC.Controllers
                    .Include(ds => ds.Degree)
                    .Include(ds => ds.School)
                    .FirstOrDefaultAsync(ds => ds.DegreeId == loanViewModel.DegreeId && ds.SchoolId == loanViewModel.SchoolId);
+
+
                 //=============================================================================================
-                //loanViewModel.DegreeName = degreeschool.Degree.EducationName;
-                //loanViewModel.SchoolName = degreeschool.School.SchoolName;
-               //=============================================================================================
+                loanViewModel.DegreeName = degreeschool.Degree.EducationName;
+                loanViewModel.SchoolName = degreeschool.School.SchoolName;
+                loanViewModel.TotalSchoolCost = degreeschool.TotalCost;
+                //=============================================================================================
+
                 var totalSchoolCost = degreeschool.TotalCost;
                 var futureCareerEarnings = (degreeschool.Degree.EarningAvg * 20);
 
 
                 // Define variables to help calculate the loan payments
                 var loanAmount = (totalSchoolCost - (loanViewModel.CashPaid + loanViewModel.Grants + loanViewModel.Scholarships));
-                var rateOfInterest = (loanViewModel.LoanRate / 100 ) / 12;
+                var rateOfInterest = (loanViewModel.LoanRate / 100) / 12;
                 var numberOfPayments = loanViewModel.LoanLengthYears * 12;
                 var loanPayment = (loanAmount * rateOfInterest) / (1 - Math.Pow(1 + rateOfInterest, numberOfPayments * -1));
                 var totalLoanPayments = loanPayment * numberOfPayments;
                 var totalCashGrantScholarships = loanViewModel.CashPaid + loanViewModel.Grants + loanViewModel.Scholarships;
-                var totalAmountPaid = totalLoanPayments + totalCashGrantScholarships;         
+                var totalAmountPaid = totalLoanPayments + totalCashGrantScholarships;
                 var benefitCostRatio = futureCareerEarnings / totalAmountPaid;
                 var loan = new Loan()
-      
-               
+
+
                 {
                     FutureCareerEarnings = futureCareerEarnings,
                     TotalSchoolCost = totalSchoolCost,
@@ -222,7 +232,7 @@ namespace SchoolScoreMVC.Controllers
         [ValidateAntiForgeryToken]
         //public ActionResult Edit(int id, IFormCollection collection)
 
-             public async Task<IActionResult> EditWorkBench(int id, Loan loan)
+        public async Task<IActionResult> EditWorkBench(int id, Loan loan)
         {
             if (id != loan.Id)
             {
@@ -230,27 +240,27 @@ namespace SchoolScoreMVC.Controllers
             }
 
             try
-                {
-                    _context.Update(loan);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!LoanExists(loan.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-
-
-                return RedirectToAction(nameof(Workbench));
-
+            {
+                _context.Update(loan);
+                await _context.SaveChangesAsync();
             }
-  
+            catch (DbUpdateConcurrencyException)
+            {
+                if (!LoanExists(loan.Id))
+                {
+                    return NotFound();
+                }
+                else
+                {
+                    throw;
+                }
+            }
+
+
+            return RedirectToAction(nameof(Workbench));
+
+        }
+
 
 
         // GET: Loan/Edit/5
@@ -279,12 +289,15 @@ namespace SchoolScoreMVC.Controllers
             try
             {
                 var user = await GetCurrentUserAsync();
-                loan.ApplicationUserId = user.Id;
+                var foundLoan = await _context.Loan.FirstOrDefaultAsync(l => l.Id == id);
+                foundLoan.Notes = loan.Notes;
 
-                _context.Loan.Update(loan);
+                //loan.ApplicationUserId = user.Id;
+
+                _context.Loan.Update(foundLoan);
                 await _context.SaveChangesAsync();
 
-               
+
                 return RedirectToAction(nameof(BCAIndex));
             }
             catch (Exception ex)
@@ -331,12 +344,12 @@ namespace SchoolScoreMVC.Controllers
 
 
         private bool LoanExists(int id)
-            {
-                return _context.Loan.Any(e => e.Id == id);
-            }
+        {
+            return _context.Loan.Any(e => e.Id == id);
+        }
 
 
-            // vid part 9 at 22.40 min pt
-            private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
+        // vid part 9 at 22.40 min pt
+        private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }

@@ -39,17 +39,19 @@
             <tr>
 
                 <td>
-                    @*@Html.DisplayFor(modelItem => Model.DegreeName)*@
+                    @*@Html.DisplayFor(modelItem => Model.DegreeSchool.Degree.EducationName)*@
                     <p>DEGREE NAME HERE</p>
                 </td>
                 <td>
                     @*@Html.DisplayFor(modelItem => Model.SchoolName)*@
+                    @*@Html.DisplayFor(modelItem => Model.DegreeSchool.School.SchoolName)*@
                     <p>SCHOOL NAME HERE</p>
                 </td>
 
                 <td>
 
                     @*@Model.TotalSchoolCost.ToString("c")*@
+                    @*@Html.DisplayFor(modelItem => Model.DegreeSchool.TotalCost)*@
                     <p> $TOTAL COST HERE</p>
                 </td>
 
