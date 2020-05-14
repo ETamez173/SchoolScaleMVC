@@ -32,96 +32,96 @@
     </thead>
     <tbody>
    
-        <form asp-controller="Loan" asp-action="Create">
-        <tr>
-     
-            <td>
-                @Html.DisplayFor(modelItem => Model.DegreeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => Model.SchoolName)
-            </td>
-   
-            <td>
-            
-                @Model.TotalSchoolCost.ToString("c")
-            </td>
+        <form asp-controller="Loan" asp-action="Edit">
+            <tr>
 
-            <td>
-                <div class="form-group">
-                    <label asp-for="CashPaid" class="control-label"></label>
-                    <input asp-for="CashPaid" class="form-control loan_cash_input" />
-                    <span asp-validation-for="CashPaid" class="text-danger"></span>
-                </div>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.DegreeName)
                 </td>
-            <td>
-                <div class="form-group">
-                    <label asp-for="Grants" class="control-label"></label>
-                    <input asp-for="Grants" class="form-control loan_grants_input" />
-                    <span asp-validation-for="Grants" class="text-danger"></span>
-                </div>
+                <td>
+                    @Html.DisplayFor(modelItem => Model.SchoolName)
                 </td>
-            <td>
-                <div class="form-group">
-                    <label asp-for="Scholarships" class="control-label"></label>
-                    <input asp-for="Scholarships" class="form-control loan_scholarships_input" />
-                    <span asp-validation-for="Scholarships" class="text-danger"></span>
-                </div>
 
-            </td>
+                <td>
 
-            <td>
-                <div class="form-group">
-                    <label asp-for="LoanAmount" class="control-label loan_amount"></label>
-                    <input asp-for="LoanAmount" class="form-control loan_amount_input" disabled />
-                    <span asp-validation-for="LoanAmount" class="text-danger"></span>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <label asp-for="LoanLengthYears" class="control-label loan_years"></label>
-                    <input asp-for="LoanLengthYears" class="form-control loan_years_input" />
-                   
-                    <span asp-validation-for="LoanLengthYears" class="text-danger"></span>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <label asp-for="LoanRate" class="control-label loan_amount"></label>
-                    <input asp-for="LoanRate" class="form-control loan_rate_input" />
-                    
-                    <span asp-validation-for="LoanRate" class="text-danger"></span>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <label asp-for="LoanPayment" class="control-label"></label>
-                    <input asp-for="LoanPayment" class="form-control loan_payment_input" disabled />
-                    <span asp-validation-for="LoanPayment" class="text-danger"></span>
-                </div>
-            </td>
-            <td>
-                <div class="form-group form-check">
-                    <label class="form-check-label">
-                        <input class="form-check-input" asp-for="FinWorkBenchStep" /> @Html.DisplayNameFor(model => model.FinWorkBenchStep)
-                    </label>
-                </div>
-            </td>
-            <td>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
-                </div>
+                    @Model.TotalSchoolCost.ToString("c")
+                </td>
+                <td>
+                    <div>
+                        <input asp-for="ApplicationUserId" class="form-control" type="hidden" />
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="CashPaid" class="control-label"></label>
+                        <input asp-for="CashPaid" class="form-control loan_cash_input" />
+                        <span asp-validation-for="CashPaid" class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Grants" class="control-label"></label>
+                        <input asp-for="Grants" class="form-control loan_grants_input" />
+                        <span asp-validation-for="Grants" class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="Scholarships" class="control-label"></label>
+                        <input asp-for="Scholarships" class="form-control loan_scholarships_input" />
+                        <span asp-validation-for="Scholarships" class="text-danger"></span>
+                    </div>
 
-            </td>
+                </td>
+
+                <td>
+                    <div class="form-group">
+                        <label asp-for="LoanAmount" class="control-label loan_amount"></label>
+                        <input asp-for="LoanAmount" class="form-control loan_amount_input" disabled />
+                        <span asp-validation-for="LoanAmount" class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="LoanLengthYears" class="control-label loan_years"></label>
+                        <input asp-for="LoanLengthYears" class="form-control loan_years_input" />
+
+                        <span asp-validation-for="LoanLengthYears" class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="LoanRate" class="control-label loan_amount"></label>
+                        <input asp-for="LoanRate" class="form-control loan_rate_input" />
+
+                        <span asp-validation-for="LoanRate" class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <label asp-for="LoanPayment" class="control-label"></label>
+                        <input asp-for="LoanPayment" class="form-control loan_payment_input" disabled />
+                        <span asp-validation-for="LoanPayment" class="text-danger"></span>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group form-check">
+                        <label class="form-check-label">
+                            <input class="form-check-input" asp-for="FinWorkBenchStep" /> @Html.DisplayNameFor(model => model.FinWorkBenchStep)
+                        </label>
+                    </div>
+                </td>
+                <td>
+                    <div class="form-group">
+                        <input type="submit" value="Save" class="btn btn-primary" />
+                    </div>
+
+                </td>
 
 
-            <td>
-
-              
-
-
-            </td>
-        </tr>
+                <td>
+                </td>
+            </tr>
     
     </form>
     

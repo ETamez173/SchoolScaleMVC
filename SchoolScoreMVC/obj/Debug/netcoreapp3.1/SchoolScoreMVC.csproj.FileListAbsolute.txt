@@ -448,3 +448,4 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.pdb
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\SchoolScoreMVC.genruntimeconfig.cache
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Loan\Delete.cshtml.g.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Loan\Edit.cshtml.g.cs

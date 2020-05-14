@@ -31,7 +31,7 @@ namespace SchoolScoreMVC.Models
         //public int LoanId { get; set; }
 
         //[Required]
-        //public Loan Loan { get; set; }
+        public Loan Loan { get; set; }
 
     }
 }
