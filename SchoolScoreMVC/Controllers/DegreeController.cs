@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SchoolScoreMVC.Models.DegreeViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolScoreMVC.Controllers
 {
+    [Authorize]
     public class DegreeController : Controller
     {
 
@@ -27,7 +29,7 @@ namespace SchoolScoreMVC.Controllers
             _context = context;
             _userManager = userManager;
 
-           
+
         }
         // GET: localhost:5001/degree
         public async Task<ActionResult> Index()
@@ -62,10 +64,10 @@ namespace SchoolScoreMVC.Controllers
             {
 
                 // build the item as a view model so we can show more information
-      
+
 
                 var degrees = await _context.Degree.ToListAsync();
-         
+
 
 
                 return View(degrees);
@@ -149,28 +151,84 @@ namespace SchoolScoreMVC.Controllers
             }
         }
 
+        //==========================================================
+
         // GET: Degree/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var user = await GetCurrentUserAsync();
+
+            if (user == null)
+            {
+                return new StatusCodeResult(StatusCodes.Status401Unauthorized);
+            }
+
+            var degree = await _context.Degree.FindAsync(id);
+            if (degree == null)
+            {
+                return NotFound();
+            }
+            {
+                return View(degree);
+            }
         }
+
+
+        //========================================================== 
 
         // POST: Degree/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        //public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<IActionResult> Edit(int id, Degree degree)
         {
-            try
-            {
-                // TODO: Add update logic here
 
+
+            if (id != degree.Id)
+            {
+                return NotFound();
+            }
+
+            //if (ModelState.IsValid)
+            //{
+                try
+                {
+                    _context.Update(degree);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!DegreeItemExists(degree.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
                 return RedirectToAction(nameof(Index));
             }
-            catch
-            {
-                return View();
-            }
-        }
+        //}
+
+
+        //    try
+        //    {
+        //        // TODO: Add update logic here
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
+
+
+
+        //==========================================================
+
 
         // GET: Degree/Delete/5
         public ActionResult Delete(int id)
@@ -193,6 +251,13 @@ namespace SchoolScoreMVC.Controllers
             {
                 return View();
             }
+        }
+
+
+
+        private bool DegreeItemExists(int id)
+        {
+            return _context.Degree.Any(e => e.Id == id);
         }
         // vid part 9 at 22.40 min pt
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);

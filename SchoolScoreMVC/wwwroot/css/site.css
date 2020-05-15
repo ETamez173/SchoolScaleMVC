@@ -74,9 +74,25 @@ body {
 .benCostAnalysis_num1 {
     font-size: 2rem;
     line-height: inherit;
+    background-color: aqua;
 }
 
     .benCostAnalysis_num1:hover {
         background-color: yellow;
     }
     /*benCostAnalysis_num2*/
+
+.body {
+
+    color:aqua;
+
+}
+
+a.model_textLink {
+    color: royalblue;
+}
+
+
+.table_scroll {
+    scroll-behavior: smooth;
+}

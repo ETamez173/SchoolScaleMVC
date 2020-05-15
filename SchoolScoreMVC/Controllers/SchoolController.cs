@@ -11,9 +11,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SchoolScoreMVC.Models.SchoolViewModels;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolScoreMVC.Controllers
 {
+    [Authorize]
     public class SchoolController : Controller
     {
 

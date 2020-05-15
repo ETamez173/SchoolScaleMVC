@@ -24,6 +24,8 @@ namespace SchoolScoreMVC.Models
 
         public string Zip { get; set; }
 
+       
+
         // this is to use the join table called DegreeSchool
         public List<DegreeSchool> DegreeSchools { get; set; }
 

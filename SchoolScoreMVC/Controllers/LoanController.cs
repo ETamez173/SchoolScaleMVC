@@ -12,12 +12,14 @@ using Microsoft.EntityFrameworkCore;
 using SchoolScoreMVC.Models.SchoolViewModels;
 using SchoolScoreMVC.Models.LoanViewModels;
 using SchoolScoreMVC.Migrations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace SchoolScoreMVC.Controllers
 {
+    [Authorize]
     public class LoanController : Controller
     {
-
+  
 
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -107,9 +109,9 @@ namespace SchoolScoreMVC.Controllers
             try
             {
 
-                var viewModel = new LoanWorkbenchViewModel();
+               
                 var user = await GetCurrentUserAsync();
-                var degreeschool = await _context.DegreeSchool
+                var Degreeschool = await _context.DegreeSchool
                    .Include(ds => ds.Degree)
                    .Include(ds => ds.School)
                    .FirstOrDefaultAsync(ds => ds.DegreeId == loanViewModel.DegreeId && ds.SchoolId == loanViewModel.SchoolId);
@@ -118,13 +120,14 @@ namespace SchoolScoreMVC.Controllers
 
 
                 //=============================================================================================
-                loanViewModel.DegreeName = degreeschool.Degree.EducationName;
-                loanViewModel.SchoolName = degreeschool.School.SchoolName;
-                loanViewModel.TotalSchoolCost = degreeschool.TotalCost;
+                //var DegreeName = Degreeschool.Degree.EducationName;
+                //var degreeName = Degreeschool.Degree.EducationName;
+                loanViewModel.SchoolName = Degreeschool.School.SchoolName;
+                loanViewModel.TotalSchoolCost = Degreeschool.TotalCost;
                 //=============================================================================================
 
-                var totalSchoolCost = degreeschool.TotalCost;
-                var futureCareerEarnings = (degreeschool.Degree.EarningAvg * 20);
+                var totalSchoolCost = Degreeschool.TotalCost;
+                var futureCareerEarnings = (Degreeschool.Degree.EarningAvg * 20);
 
 
                 // Define variables to help calculate the loan payments
@@ -140,6 +143,7 @@ namespace SchoolScoreMVC.Controllers
 
 
                 {
+                   
                     FutureCareerEarnings = futureCareerEarnings,
                     TotalSchoolCost = totalSchoolCost,
                     CashPaid = loanViewModel.CashPaid,
@@ -152,7 +156,7 @@ namespace SchoolScoreMVC.Controllers
                     LoanPayment = loanPayment,
                     FinWorkBenchStep = loanViewModel.FinWorkBenchStep,
                     ApplicationUserId = user.Id,
-                    DegreeSchoolId = degreeschool.Id,
+                    DegreeSchoolId = Degreeschool.Id,
                     TotalLoanPayments = totalLoanPayments,
                     TotalAmountPaid = totalAmountPaid,
                     BenefitCostAnalysisRatio = Convert.ToInt32(benefitCostRatio)
