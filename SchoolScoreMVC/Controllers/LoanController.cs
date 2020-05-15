@@ -28,12 +28,14 @@ namespace SchoolScoreMVC.Controllers
             _context = context;
             _userManager = userManager;
         }
-        // GET: localhost:5001/loan
 
+
+        // GET: localhost:5001/loan
+        // this populates the BCA table with loans and figures
         public async Task<IActionResult> BCAIndex()
-            //public async Task<IActionResult> BCAIndex(LoanBenefitCostAnalysisViewModel bcaViewModel)
+      
         {
-           
+
             var user = await GetCurrentUserAsync();
             var items = await _context.Loan
                 .Include(l => l.DegreeSchool)
@@ -41,19 +43,17 @@ namespace SchoolScoreMVC.Controllers
                 .Include(l => l.DegreeSchool)
                 .ThenInclude(ds => ds.School)
                 .Where(l => l.ApplicationUserId == user.Id)
-                
+
                 .ToListAsync();
 
 
-                      return View(items);
+            return View(items);
         }
+
 
         // GET: localhost:5001/loan
         public async Task<ActionResult> Index(string filter)
-
-
         {
-
             var user = await GetCurrentUserAsync();
             var items = await _context.Loan
                 .Where(l => l.ApplicationUserId == user.Id)
@@ -61,6 +61,7 @@ namespace SchoolScoreMVC.Controllers
 
             return View(items);
         }
+
 
 
         // GET: Loan/Details/5
@@ -112,6 +113,8 @@ namespace SchoolScoreMVC.Controllers
                    .Include(ds => ds.Degree)
                    .Include(ds => ds.School)
                    .FirstOrDefaultAsync(ds => ds.DegreeId == loanViewModel.DegreeId && ds.SchoolId == loanViewModel.SchoolId);
+
+
 
 
                 //=============================================================================================
@@ -282,6 +285,7 @@ namespace SchoolScoreMVC.Controllers
         }
 
         // POST: Loan/Edit/5
+        // This posts Notes to the Loan table
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(int id, Loan loan)

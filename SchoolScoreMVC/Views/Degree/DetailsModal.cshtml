@@ -33,14 +33,14 @@
                         <h4 class="modal-title">Modal Header</h4>
                     </div>
                     <div class="modal-body">
-                        <p>Ranked # 4 out of 20 Fasted Growing Jobs by SomeExpertDudes Magazine.</p>
+                        <p>Ranked # 4 out of 20 Fasted Growing Jobs by Careers Magazine.</p>
                         <dl class="row">
                             @*<dt class="col-sm-2">
-                                @Html.DisplayNameFor(model => model.Id)
-                            </dt>*@
+                                    @Html.DisplayNameFor(model => model.Id)
+                                </dt>*@
                             @*<dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.Id)
-                            </dd>*@
+                                    @Html.DisplayFor(model => model.Id)
+                                </dd>*@
                             <dt class="col-sm-2">
                                 @Html.DisplayNameFor(model => model.EducationName)
                             </dt>
@@ -51,19 +51,23 @@
                                 @Html.DisplayNameFor(model => model.EarningAvg)
                             </dt>
                             <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.EarningAvg)
+                                @*@Html.DisplayFor(model => model.EarningAvg)*@
+                                @Model.EarningAvg.ToString("c")
                             </dd>
                             <dt class="col-sm-2">
                                 @Html.DisplayNameFor(model => model.EarningHigh)
+
                             </dt>
                             <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.EarningHigh)
+                                @*@Html.DisplayFor(model => model.EarningHigh)*@
+                                @Model.EarningHigh.ToString("c")
                             </dd>
                             <dt class="col-sm-2">
                                 @Html.DisplayNameFor(model => model.EarningLow)
                             </dt>
                             <dd class="col-sm-10">
-                                @Html.DisplayFor(model => model.EarningLow)
+                                @*@Html.DisplayFor(model => model.EarningLow)*@
+                                @Model.EarningLow.ToString("c")
                             </dd>
                         </dl>
                     </div>

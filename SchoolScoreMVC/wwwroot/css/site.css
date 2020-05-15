@@ -71,3 +71,12 @@ body {
 }
 
 
+.benCostAnalysis_num1 {
+    font-size: 2rem;
+    line-height: inherit;
+}
+
+    .benCostAnalysis_num1:hover {
+        background-color: yellow;
+    }
+    /*benCostAnalysis_num2*/

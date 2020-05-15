@@ -193,28 +193,65 @@ namespace SchoolScoreMVC.Controllers
             }
         }
 
-        // GET: School/Delete/5
-        public ActionResult Delete(int id)
+        //// GET: School/Delete/5
+        //public ActionResult Delete(int id)
+        //{
+        //    return View();
+        //}
+
+        //// POST: School/Delete/5
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Delete(int id, IFormCollection collection)
+        //{
+        //    try
+        //    {
+        //        // TODO: Add delete logic here
+
+        //        return RedirectToAction(nameof(Index));
+        //    }
+        //    catch
+        //    {
+        //        return View();
+        //    }
+        //}
+
+        //===========================================
+        public async Task<IActionResult> Delete(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var school = await _context.School
+               .FirstOrDefaultAsync(l => l.Id == id);
+            if (school == null)
+            {
+                return NotFound();
+            }
+
+            return View(school);
         }
 
-        // POST: School/Delete/5
-        [HttpPost]
+
+
+        [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            try
-            {
-                // TODO: Add delete logic here
-
-                return RedirectToAction(nameof(Index));
-            }
-            catch
-            {
-                return View();
-            }
+            var school = await _context.School.FindAsync(id);
+            _context.School.Remove(school);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
         }
+
+
+
+
+
+
+
         // vid part 9 at 22.40 min pt
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }

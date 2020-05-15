@@ -429,6 +429,7 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Loan\Index.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\Loan\Workbench.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\School\Create.cshtml.g.cs
+C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\School\Delete.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\School\Details.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\School\Index.cshtml.g.cs
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\obj\Debug\netcoreapp3.1\Razor\Views\School\SchoolMatch.cshtml.g.cs

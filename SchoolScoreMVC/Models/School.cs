@@ -13,7 +13,7 @@ namespace SchoolScoreMVC.Models
         [Required]
         public int Id { get; set; }
 
-
+        [Display(Name = "School")]
         public string SchoolName { get; set; }
 
         public string Address { get; set; }

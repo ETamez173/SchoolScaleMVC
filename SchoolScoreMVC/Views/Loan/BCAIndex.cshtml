@@ -2,7 +2,7 @@
 @*@model IEnumerable<SchoolScoreMVC.Models.LoanViewModels.LoanBenefitCostAnalysisViewModel>*@
 
 @{
-    ViewData["Title"] = "BCAIndex";
+    ViewData["Title"] = "Benefit Cost Analysis";
 }
 
 <h1>Benefit Cost Analysis </h1>
@@ -10,37 +10,23 @@
 @*<p>
         <a asp-action="Create">Create New</a>
     </p>*@
-<table class="table">
+<table class="table table-hover">
+    
+
+        @*<table class="table">*@
     <thead>
-        <tr>
-
-            <th>
-                Degree / Program
+        @*<tr>*@
+        @*<tr class="table-primary">*@
+        <tr class="table-success">
+            <th scope="row">
+                @Html.DisplayNameFor(model => model.DegreeSchool.Degree.EducationName)
             </th>
-
-
-
-
-            @*<th>
-            Yearly Earnings
-        </th>*@
             <th>
-                Career Earnings
+                @Html.DisplayNameFor(model => model.FutureCareerEarnings)
             </th>
-
             <th>
-                School
+                @Html.DisplayNameFor(model => model.DegreeSchool.School.SchoolName)
             </th>
-
-            @*<th>
-            Total Cost
-        </th>*@
-
-
-
-            @*<th>
-            @Html.DisplayNameFor(model => model.Id)
-        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.TotalSchoolCost)
             </th>
@@ -77,9 +63,7 @@
                 @Html.DisplayNameFor(model => model.TotalAmountPaid)
             </th>
 
-            @*<th>
-            @Html.DisplayNameFor(model => model.FutureCareerEarnings)
-        </th>*@
+
             <th>
                 @Html.DisplayNameFor(model => model.BenefitCostAnalysisRatio)
             </th>
@@ -88,129 +72,69 @@
                 @Html.DisplayNameFor(model => model.Notes)
             </th>
 
-
-
-            @*<th>
-            @Html.DisplayNameFor(model => model.FinWorkBenchStep)
-        </th>*@
-            @*<th>
-            @Html.DisplayNameFor(model => model.ApplicationUserId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DegreeSchoolId)
-        </th>*@
+            <th>
+                <p>Action</p>
+            </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.DegreeSchool.Degree.EducationName)
-                @*<p>DEGREE NAME HERE</p>*@
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.FutureCareerEarnings)
-                @*@item.FutureCareerEarnings.ToString("c")*@
-            </td>
-
-
-            <td>
-                @Html.DisplayFor(modelItem => item.DegreeSchool.School.SchoolName)
-                @*<p>SCHOOL NAME HERE</p>*@
-            </td>
-
-
-
-            @*<td>
-
-            @Model.TotalSchoolCost.ToString("c")
-            <p> $TOTAL COST HERE</p>
-        </td>*@
-
-            @*<td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>*@
-
-
-            <td>
-                @*@Html.DisplayFor(modelItem => item.TotalSchoolCost)*@
-                @item.TotalSchoolCost.ToString("c")
-                @*@item.EarningAvg.ToString("c")*@
-            </td>
+            @*<tr class="table-info">*@
+            @*<tr class="table-secondary">*@
+            <tr class="table-light">
+                <td>
+                    @Html.DisplayFor(modelItem => item.DegreeSchool.Degree.EducationName)
+                </td>
+                <td>
+                    @item.FutureCareerEarnings.ToString("c")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DegreeSchool.School.SchoolName)
+                </td>
+                <td>
+                    @item.TotalSchoolCost.ToString("c")
+                </td>
+                <td>
+                    @item.LoanAmount.ToString("c")
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoanLengthYears)
+                </td>
+                <td>
+                    @item.LoanPayment.ToString("c")
+                </td>
+                <td>
+                    @item.TotalLoanPayments.ToString("c")
+                </td>
 
 
-
-
-            <td>
-                @*@Html.DisplayFor(modelItem => item.LoanAmount)*@
-                @item.LoanAmount.ToString("c")
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.LoanLengthYears)
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.LoanPayment)*@
-                @item.LoanPayment.ToString("c")
-            </td>
-            <td>
-                @*@Html.DisplayFor(modelItem => item.TotalLoanPayments)*@
-                @item.TotalLoanPayments.ToString("c")
-            </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.LoanRate)
-        </td>*@
-            @*<td>
-            @Html.DisplayFor(modelItem => item.LoanLengthMonths)
-        </td>*@
-
-
-
-            @*<td>
-            @Html.DisplayFor(modelItem => item.CashPaid)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Grants)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Scholarships)
-        </td>*@
-            <td>
-                @*@Html.DisplayFor(modelItem => item.TotalAmountPaid)*@
-                @item.TotalAmountPaid.ToString("c")
-            </td>
-
-            <td>
-                @Html.DisplayFor(modelItem => item.BenefitCostAnalysisRatio)
-
-            </td>
-
-
-            <td>
-                @Html.DisplayFor(modelItem => item.Notes)
-
-            </td>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.FinWorkBenchStep)
-        </td>*@
-            @*<td>
-            @Html.DisplayFor(modelItem => item.ApplicationUserId)
-        </td>*@
-            @*<td>
-            @Html.DisplayFor(modelItem => item.DegreeSchoolId)
-        </td>*@
-            <td>
-                @Html.ActionLink("Add Edit Notes", "Edit", new { id = item.Id }) 
-                @*@Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |*@
-             
-            </td>
-            <td> 
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
-        }
-    </tbody>
+                @*<td>
+                    @Html.DisplayFor(modelItem => item.CashPaid)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Grants)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Scholarships)
+                </td>*@
+                <td>
+                    @item.TotalAmountPaid.ToString("c")
+                </td>
+                <td class="benCostAnalysis_num1 benCostAnalysis_num2">
+                    @Html.DisplayFor(modelItem => item.BenefitCostAnalysisRatio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Notes)
+                </td>
+                <td>
+                    @Html.ActionLink("Add Edit Notes", "Edit", new { id = item.Id })
+                </td>
+                <td>
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+            }
+        </tbody>
 </table>

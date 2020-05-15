@@ -6,18 +6,18 @@
 
 <h1>School Match</h1>
 
-@*<p>
+<p>
     <a asp-action="Create">Create New</a>
-</p>*@
-<table class="table">
+</p>
+<table class="table table-hover">
     <thead>
-        <tr>
+        
             @*<th>
                 @Html.DisplayNameFor(model => model.Id)
             </th>*@
 
-        <tr>
-            <th>
+        <tr class="table-success">
+            <th scope="row">
                 Degree / Program
             </th>
             <th>
@@ -34,7 +34,8 @@
             <th>
                 Total Cost
             </th>
-            <th></th>
+            <th>......</th>
+            <th>Action</th>
         </tr>
 
     </thead>
@@ -43,40 +44,39 @@
     <tbody>
         @foreach (var item in Model.Schools)
         {
-        <tr>
-            @*<td>
-            @Html.DisplayFor(modelItem => item.Id)
-        </td>*@
-            <td>
-                @Html.DisplayFor(modelItem => Model.DegreeName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SchoolName)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.State)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.AnnualCost)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TotalCost)
-            </td>
-            <td>
-
-            </td>
-            <td>
-
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => Model.DegreeName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SchoolName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AnnualCost)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TotalCost)
+                </td>
+                <td>
+                </td>
+                <td>
 
 
-                <a data-toggle="modal" data-target="#myModal">Details</a>
 
-                <a asp-action="CreateLoan" asp-controller="Loan" asp-route-schoolId="@item.SchoolId" asp-route-degreeId="@Model.DegreeId">Begin Analysis </a>
-     
+                    <a data-toggle="modal" data-target="#myModal">Details</a>
+
+                    <a asp-action="CreateLoan" asp-controller="Loan" asp-route-schoolId="@item.SchoolId" asp-route-degreeId="@Model.DegreeId">Begin Analysis </a>
 
 
-            </td>
-        </tr>
+
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -86,31 +86,33 @@
     <!-- Trigger the modal with a button -->
     <!-- Modal -->
     <div class="modal fade" id="myModal" role="dialog">
-        <div class="modal-dialog">
+        @*<div class="modal-dialog">*@
+            <div class="modal-dialog" role="document">
+                <!-- Modal content-->
+                <div class="modal-content">
+                    <div class="modal-header">
 
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
+                        <h5 class="modal-title">School Details</h5>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
 
-                    <h3 class="modal-title">School Details</h3>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-                    <p>Ranked # 3 out of 100 American Colleges by Fun School Magazine</p>
-                    <dl class="row">
+                        @*<span aria-hidden="true">&times;</span>*@
+                    </div>
+                    <div class="modal-body">
+                        <p>Ranked # 3 out of 100 American Colleges by Fun School Magazine</p>
+                        <dl class="row">
 
-                        <div>
-                            <dt class="col-sm-2">
-                                @Html.DisplayNameFor(item => item.DegreeName)
-                            </dt>
                             <div>
+                                <dt class="col-sm-2">
+                                    @Html.DisplayNameFor(item => item.DegreeName)
+                                </dt>
+                                <div>
+                                </div>
+                                <br />
+                                <dd class="col-sm-10">
+                                    @Html.DisplayFor(item => item.DegreeName)
+                                </dd>
                             </div>
-                            <br />
-                            <dd class="col-sm-10">
-                                @Html.DisplayFor(item => item.DegreeName)
-                            </dd>
-                        </div>
-                        @*<dt class="col-sm-2">
+                            @*<dt class="col-sm-2">
                             @Html.DisplayNameFor(model => model.SchoolName)
                         </dt>
                         <dd class="col-sm-10">
@@ -140,14 +142,14 @@
                         <dd class="col-sm-10">
                             @Html.DisplayFor(model => model.Zip)
                         </dd>*@
-                    </dl>
+                        </dl>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
-            </div>
 
+            </div>
         </div>
-    </div>
 
 </div>
