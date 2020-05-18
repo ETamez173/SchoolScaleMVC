@@ -1,0 +1,308 @@
+﻿@model SchoolScoreMVC.Models.LoanViewModels.LoanWorkbenchViewModel
+
+@{
+    ViewData["Title"] = "CreateLoanCalc";
+}
+
+    <h1>Financial Workbench</h1>
+
+    <h4>Financing Details</h4>
+<hr />
+<table class="table table-hover">
+    <tbody>
+      
+        <tr class="table-light">
+            <div class="row">
+                <div class="col-md-4">
+                    <form asp-action="CreateLoanCalc">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <td>
+                            <div class="form-group">
+                                <br />
+                                <label asp-for="DegreeName" class="control-label"></label>
+                                <input asp-for="DegreeName" class="form-control degreeName__boxWidth" disabled />
+                                <span asp-validation-for="DegreeName" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <br />
+                                <label asp-for="SchoolName" class="control-label " ></label>
+                                <input asp-for="SchoolName" class="form-control schoolName__boxWidth" disabled />
+                                <span asp-validation-for="SchoolName" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                         
+                            <div class="form-group">
+                                <br />
+                                <label asp-for="TotalSchoolCost" class="control-label"></label>
+                                <input asp-for="TotalSchoolCost" class="form-control totSchoolCost__boxWidth" disabled />
+                                <span asp-validation-for="TotalSchoolCost" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+
+                            <div class="form-group">
+                                <label asp-for="CashPaid" class="control-label"></label>
+                                <input asp-for="CashPaid" class="form-control cashPaid__boxWidth" />
+                                <span asp-validation-for="CashPaid" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="Grants" class="control-label"></label>
+                                <input asp-for="Grants" class="form-control grants__boxWidth" />
+                                <span asp-validation-for="Grants" class="text-danger"></span>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="Scholarships" class="control-label "></label>
+                                <input asp-for="Scholarships" class="form-control scholarships__boxWidth" />
+                                <span asp-validation-for="Scholarships" class="text-danger"></span>
+                            </div>
+                        </td>
+
+              
+                        @*<td>
+                            <div class="form-group">
+                                <label asp-for="LoanAmount" class="control-label"></label>
+                                <input asp-for="LoanAmount" class="form-control" disabled />
+                                <span asp-validation-for="LoanAmount" class="text-danger"></span>
+                            </div>
+                        </td>*@
+                        <td>
+                            <div class="form-group">
+                                <label asp-for="LoanRate" class="control-label"></label>
+                                <input asp-for="LoanRate" class="form-control loanRate__boxWidth" />
+                                <span asp-validation-for="LoanRate" class="text-danger"></span>
+                            </div>
+                        </td>
+                       
+                        <td>
+                            <div class="form-group">
+                                @*<br />*@
+                                <label asp-for="LoanLengthYears" class="control-label"></label>
+                                <input asp-for="LoanLengthYears" class="form-control loanLengthYears__boxWidth" />
+                                <span asp-validation-for="LoanLengthYears" class="text-danger"></span>
+                            </div>
+                        </td>
+                        @*<td>
+                            <div class="form-group">
+                                <label asp-for="LoanPayment" class="control-label"></label>
+                                <input asp-for="LoanPayment" class="form-control" disabled />
+                                <span asp-validation-for="LoanPayment" class="text-danger"></span>
+                            </div>
+                        </td>*@
+
+                        @*<div class="form-group">
+            <label asp-for="TotalLoanPayments" class="control-label"></label>
+            <input asp-for="TotalLoanPayments" class="form-control" />
+            <span asp-validation-for="TotalLoanPayments" class="text-danger"></span>
+        </div>*@
+
+                        @*<div class="form-group">
+            <label asp-for="TotalAmountPaid" class="control-label"></label>
+            <input asp-for="TotalAmountPaid" class="form-control" />
+            <span asp-validation-for="TotalAmountPaid" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="FutureCareerEarnings" class="control-label"></label>
+            <input asp-for="FutureCareerEarnings" class="form-control" />
+            <span asp-validation-for="FutureCareerEarnings" class="text-danger"></span>
+        </div>*@
+                        @*<div class="form-group">
+            <label asp-for="BenefitCostAnalysisRatio" class="control-label"></label>
+            <input asp-for="BenefitCostAnalysisRatio" class="form-control" />
+            <span asp-validation-for="BenefitCostAnalysisRatio" class="text-danger"></span>
+        </div>*@
+                        @*<div class="form-group form-check">
+            <label class="form-check-label">
+                <input class="form-check-input" asp-for="FinWorkBenchStep" /> @Html.DisplayNameFor(model => model.FinWorkBenchStep)
+            </label>
+        </div>
+        <div class="form-group">
+            <label asp-for="ApplicationUserId" class="control-label"></label>
+            <input asp-for="ApplicationUserId" class="form-control" />
+            <span asp-validation-for="ApplicationUserId" class="text-danger"></span>
+        </div>*@
+        <div class="form-group">
+            @*<label asp-for="DegreeSchoolId" class="control-label"></label>*@
+            <input asp-for="DegreeSchoolId" class="form-control" type="hidden" />
+            @*<span asp-validation-for="DegreeSchoolId" class="text-danger"></span>*@
+        </div>
+        @*<div class="form-group">
+            <label asp-for="Notes" class="control-label"></label>
+            <input asp-for="Notes" class="form-control" />
+            <span asp-validation-for="Notes" class="text-danger"></span>
+        </div>*@
+
+                        <td>
+                            <div class="form-group">
+                                <input type="submit" value="Crunch Numbers" class="btn btn-primary" />
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                @*<label asp-for="DegreeId" class="control-label"></label>*@
+                                <input asp-for="DegreeId" class="form-control" type="hidden" />
+                                @*<span asp-validation-for="DegreeId" class="text-danger"></span>*@
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-group">
+                                @*<label asp-for="SchoolId" class="control-label"></label>*@
+                                <input asp-for="SchoolId" class="form-control" type="hidden" />
+                                @*<span asp-validation-for="SchoolId" class="text-danger"></span>*@
+                            </div>
+                        </td>
+                    </form>
+                </div>
+            </div>
+
+            <div>
+                <a asp-action="Index">Back to List</a>
+            </div>
+        </tr>
+    
+    </tbody>
+</table>
+    @*=======================================================*@
+
+    @*<h1>CreateLoanCalc</h1>
+
+        <h4>LoanWorkbenchViewModel</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="CreateLoanCalc">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="DegreeName" class="control-label"></label>
+                        <input asp-for="DegreeName" class="form-control" disabled />
+                        <span asp-validation-for="DegreeName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SchoolName" class="control-label"></label>
+                        <input asp-for="SchoolName" class="form-control" disabled />
+                        <span asp-validation-for="SchoolName" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="TotalSchoolCost" class="control-label"></label>
+                        <input asp-for="TotalSchoolCost" class="form-control" disabled />
+                        <span asp-validation-for="TotalSchoolCost" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label asp-for="CashPaid" class="control-label"></label>
+                        <input asp-for="CashPaid" class="form-control" />
+                        <span asp-validation-for="CashPaid" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Grants" class="control-label"></label>
+                        <input asp-for="Grants" class="form-control" />
+                        <span asp-validation-for="Grants" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Scholarships" class="control-label"></label>
+                        <input asp-for="Scholarships" class="form-control" />
+                        <span asp-validation-for="Scholarships" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="DegreeId" class="control-label"></label>
+                        <input asp-for="DegreeId" class="form-control" type="hidden" />
+                        <span asp-validation-for="DegreeId" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SchoolId" class="control-label"></label>
+                        <input asp-for="SchoolId" class="form-control" type="hidden" />
+                        <span asp-validation-for="SchoolId" class="text-danger"></span>
+                    </div>
+
+
+                    <div class="form-group">
+                            <label asp-for="Id" class="control-label"></label>
+                            <input asp-for="Id" class="form-control" />
+                            <span asp-validation-for="Id" class="text-danger"></span>
+                        </div>
+                    <div class="form-group">
+                        <label asp-for="LoanAmount" class="control-label"></label>
+                        <input asp-for="LoanAmount" class="form-control" disabled />
+                        <span asp-validation-for="LoanAmount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LoanRate" class="control-label"></label>
+                        <input asp-for="LoanRate" class="form-control" />
+                        <span asp-validation-for="LoanRate" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                            <label asp-for="LoanLengthMonths" class="control-label"></label>
+                            <input asp-for="LoanLengthMonths" class="form-control" />
+                            <span asp-validation-for="LoanLengthMonths" class="text-danger"></span>
+                        </div>
+                    <div class="form-group">
+                        <label asp-for="LoanLengthYears" class="control-label"></label>
+                        <input asp-for="LoanLengthYears" class="form-control" />
+                        <span asp-validation-for="LoanLengthYears" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="LoanPayment" class="control-label"></label>
+                        <input asp-for="LoanPayment" class="form-control" disabled />
+                        <span asp-validation-for="LoanPayment" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                            <label asp-for="TotalLoanPayments" class="control-label"></label>
+                            <input asp-for="TotalLoanPayments" class="form-control" />
+                            <span asp-validation-for="TotalLoanPayments" class="text-danger"></span>
+                        </div>
+
+                    <div class="form-group">
+                            <label asp-for="TotalAmountPaid" class="control-label"></label>
+                            <input asp-for="TotalAmountPaid" class="form-control" />
+                            <span asp-validation-for="TotalAmountPaid" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="FutureCareerEarnings" class="control-label"></label>
+                            <input asp-for="FutureCareerEarnings" class="form-control" />
+                            <span asp-validation-for="FutureCareerEarnings" class="text-danger"></span>
+                        </div>
+                    <div class="form-group">
+                            <label asp-for="BenefitCostAnalysisRatio" class="control-label"></label>
+                            <input asp-for="BenefitCostAnalysisRatio" class="form-control" />
+                            <span asp-validation-for="BenefitCostAnalysisRatio" class="text-danger"></span>
+                        </div>
+                    <div class="form-group form-check">
+                            <label class="form-check-label">
+                                <input class="form-check-input" asp-for="FinWorkBenchStep" /> @Html.DisplayNameFor(model => model.FinWorkBenchStep)
+                            </label>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="ApplicationUserId" class="control-label"></label>
+                            <input asp-for="ApplicationUserId" class="form-control" />
+                            <span asp-validation-for="ApplicationUserId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="DegreeSchoolId" class="control-label"></label>
+                            <input asp-for="DegreeSchoolId" class="form-control" />
+                            <span asp-validation-for="DegreeSchoolId" class="text-danger"></span>
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Notes" class="control-label"></label>
+                            <input asp-for="Notes" class="form-control" />
+                            <span asp-validation-for="Notes" class="text-danger"></span>
+                        </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Back to List</a>
+        </div>*@
+

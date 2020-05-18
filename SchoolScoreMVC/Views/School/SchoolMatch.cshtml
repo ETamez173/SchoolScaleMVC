@@ -67,12 +67,14 @@
                 </td>
                 <td>
 
-               
 
-                    <a data-toggle="modal" data-target="#myModal" class="model_textLink">Details |</a>
-            
 
-                    <a asp-action="CreateLoan" asp-controller="Loan" asp-route-schoolId="@item.SchoolId" asp-route-degreeId="@Model.DegreeId">Begin Analysis </a>
+                    @Html.ActionLink("Details", "Details", new { id = item.SchoolId })
+                    @*<a data-toggle="modal" data-target="#myModal" class="model_textLink">Details |</a>*@
+
+                    <a class="btn-outline-secondary" asp-action="Details" name="SchoolId" asp-route-returnController="@Model.ReturnController" asp-route-returnAction="Model.ReturnAction" asp-route-id="item.SchoolId">Details</a>
+
+                    <a asp-action="CreateLoanCalc" asp-controller="Loan" asp-route-schoolId="@item.SchoolId" asp-route-degreeId="@Model.DegreeId">Begin Analysis </a>
 
 
 

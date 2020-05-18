@@ -19,7 +19,7 @@ namespace SchoolScoreMVC.Controllers
     [Authorize]
     public class LoanController : Controller
     {
-  
+
 
         private readonly ApplicationDbContext _context;
         private readonly UserManager<ApplicationUser> _userManager;
@@ -35,7 +35,7 @@ namespace SchoolScoreMVC.Controllers
         // GET: localhost:5001/loan
         // this populates the BCA table with loans and figures
         public async Task<IActionResult> BCAIndex()
-      
+
         {
 
             var user = await GetCurrentUserAsync();
@@ -82,6 +82,108 @@ namespace SchoolScoreMVC.Controllers
 
 
         //GET: Loan/CreateLoan
+
+        //  Loan/CreateLoanCalc?degreeId=2&schoolId=5
+        public async Task<ActionResult> CreateLoanCalc(int degreeId, int schoolId)
+        {
+
+            var user = await GetCurrentUserAsync();
+            var Degreeschool = await _context.DegreeSchool
+               .Include(ds => ds.Degree)
+               .Include(ds => ds.School)
+               .FirstOrDefaultAsync(ds => ds.DegreeId == degreeId && ds.SchoolId == schoolId);
+
+
+            var totalSchoolCost = Degreeschool.TotalCost;
+            var degreeName = Degreeschool.Degree.EducationName;
+            var schoolName = Degreeschool.School.SchoolName;
+            var degreesSchoolId = Degreeschool.Id;
+
+            var LoanWorkbenchViewModel = new LoanWorkbenchViewModel()
+            {
+                SchoolId = schoolId,
+                DegreeId = degreeId,
+                TotalSchoolCost = totalSchoolCost,
+                DegreeName = degreeName,
+                SchoolName = schoolName,
+                DegreeSchoolId = degreesSchoolId,
+
+            };
+
+            return View(LoanWorkbenchViewModel);
+        }
+
+        //// POST: Loan/CreateLoan
+        ///Loan/CreateLoanCalc?degreeId=2&schoolId=5
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public async Task<IActionResult> CreateLoanCalc(int degreeId, int schoolId, LoanWorkbenchViewModel loanViewModel)
+
+
+        {
+            try
+            {
+
+                var user = await GetCurrentUserAsync();
+                var Degreeschool = await _context.DegreeSchool
+                   .Include(ds => ds.Degree)
+                   .Include(ds => ds.School)
+                   .FirstOrDefaultAsync(ds => ds.DegreeId == loanViewModel.DegreeId && ds.SchoolId == loanViewModel.SchoolId);
+
+
+                var totalSchoolCost = Degreeschool.TotalCost;
+                var futureCareerEarnings = (Degreeschool.Degree.EarningAvg * 20);
+
+                // Define variables to help calculate the loan payments
+                var loanAmount = (totalSchoolCost - (loanViewModel.CashPaid + loanViewModel.Grants + loanViewModel.Scholarships));
+                var rateOfInterest = (loanViewModel.LoanRate / 100) / 12;
+                var numberOfPayments = loanViewModel.LoanLengthYears * 12;
+                var loanPayment = (loanAmount * rateOfInterest) / (1 - Math.Pow(1 + rateOfInterest, numberOfPayments * -1));
+                var totalLoanPayments = loanPayment * numberOfPayments;
+                var totalCashGrantScholarships = loanViewModel.CashPaid + loanViewModel.Grants + loanViewModel.Scholarships;
+                var totalAmountPaid = totalLoanPayments + totalCashGrantScholarships;
+                var benefitCostRatio = futureCareerEarnings / totalAmountPaid;
+                var loan = new Loan()
+
+
+                {
+
+                    FutureCareerEarnings = futureCareerEarnings,
+                    TotalSchoolCost = totalSchoolCost,
+                    CashPaid = loanViewModel.CashPaid,
+                    Grants = loanViewModel.Grants,
+                    Scholarships = loanViewModel.Scholarships,
+                    LoanAmount = loanAmount,
+                    LoanRate = loanViewModel.LoanRate,
+                    LoanLengthYears = loanViewModel.LoanLengthYears,
+                    LoanLengthMonths = loanViewModel.LoanLengthYears * 12,
+                    LoanPayment = loanPayment,
+                    FinWorkBenchStep = loanViewModel.FinWorkBenchStep,
+                    ApplicationUserId = user.Id,
+                    DegreeSchoolId = Degreeschool.Id,
+                    TotalLoanPayments = totalLoanPayments,
+                    TotalAmountPaid = totalAmountPaid,
+                    BenefitCostAnalysisRatio = Convert.ToInt32(benefitCostRatio)
+
+                };
+
+                _context.Loan.Add(loan);
+                await _context.SaveChangesAsync();
+
+                return RedirectToAction(nameof(BCAIndex));
+            }
+            catch (Exception ex)
+            {
+                return View();
+            }
+        }
+
+
+
+        //GET: Loan/CreateLoan
         public ActionResult CreateLoan(int degreeId, int schoolId)
         {
 
@@ -104,27 +206,16 @@ namespace SchoolScoreMVC.Controllers
 
         public async Task<IActionResult> CreateLoan(int degreeId, int schoolId, LoanWorkbenchViewModel loanViewModel)
 
-        //public async Task<ActionResult> CreateLoan(LoanWorkbenchViewModel loanViewModel)
         {
             try
             {
 
-               
                 var user = await GetCurrentUserAsync();
                 var Degreeschool = await _context.DegreeSchool
                    .Include(ds => ds.Degree)
                    .Include(ds => ds.School)
                    .FirstOrDefaultAsync(ds => ds.DegreeId == loanViewModel.DegreeId && ds.SchoolId == loanViewModel.SchoolId);
 
-
-
-
-                //=============================================================================================
-                //var DegreeName = Degreeschool.Degree.EducationName;
-                //var degreeName = Degreeschool.Degree.EducationName;
-                loanViewModel.SchoolName = Degreeschool.School.SchoolName;
-                loanViewModel.TotalSchoolCost = Degreeschool.TotalCost;
-                //=============================================================================================
 
                 var totalSchoolCost = Degreeschool.TotalCost;
                 var futureCareerEarnings = (Degreeschool.Degree.EarningAvg * 20);
@@ -143,7 +234,7 @@ namespace SchoolScoreMVC.Controllers
 
 
                 {
-                   
+
                     FutureCareerEarnings = futureCareerEarnings,
                     TotalSchoolCost = totalSchoolCost,
                     CashPaid = loanViewModel.CashPaid,
@@ -202,12 +293,10 @@ namespace SchoolScoreMVC.Controllers
                 // Grab the loans
 
                 var degreeschool = await _context.DegreeSchool
-                        //.Where(DegreeSchool.ApplicationUserId = user)
                         .Include(ds => ds.Degree)
                         .Include(ds => ds.School)
                         .Include(ds => ds.Loan)
-
-                       .FirstOrDefaultAsync(ds => ds.DegreeId == degreeId && ds.SchoolId == schoolId);
+                        .FirstOrDefaultAsync(ds => ds.DegreeId == degreeId && ds.SchoolId == schoolId);
 
                 viewModel.DegreeId = degreeId;
                 viewModel.SchoolId = schoolId;
@@ -349,15 +438,16 @@ namespace SchoolScoreMVC.Controllers
 
 
 
-
+        private bool DegreeSchoolExists(int id)
+        {
+            return _context.DegreeSchool.Any(e => e.Id == id);
+        }
 
         private bool LoanExists(int id)
         {
             return _context.Loan.Any(e => e.Id == id);
         }
 
-
-        // vid part 9 at 22.40 min pt
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }

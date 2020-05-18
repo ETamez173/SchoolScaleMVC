@@ -96,3 +96,29 @@ a.model_textLink {
 .table_scroll {
     scroll-behavior: smooth;
 }
+
+.schoolName__boxWidth, .degreeName__boxWidth {
+    min-width: 275px;
+    background-color: yellow;
+}
+
+.scholarships__boxWidth, .grants__boxWidth,
+.cashPaid__boxWidth {
+    min-width: 100px;
+    background-color: yellow;
+}
+
+.totSchoolCost__boxWidth{
+min-width: 100px;
+
+}
+
+.loanRate__boxWidth {
+    min-width: 50px;
+    background-color: yellow;
+}
+
+.loanLengthYears__boxWidth {
+    min-width: 75px;
+    background-color: yellow;
+}

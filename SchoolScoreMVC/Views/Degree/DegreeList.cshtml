@@ -55,6 +55,7 @@
                     <td>
                         @*@Html.DisplayFor(modelItem => item.EarningAvg.ToString("c"))*@
                         @item.EarningAvg.ToString("c")
+
                     </td>
                     <td>
                         @*@Html.DisplayFor(modelItem => item.EarningHigh.ToString("c"))*@
@@ -94,10 +95,12 @@
                                     @Html.DisplayFor(model => model.Id)
                                 </dd>*@
                                                 <dt class="col-sm-2">
-                                                    @Html.DisplayNameFor(model => model.EducationName)
+                                                    @*@Html.DisplayNameFor(model => model.EducationName)*@
+                                                    @Html.DisplayNameFor(modelItem => item.EducationName)
                                                 </dt>
                                                 <dd class="col-sm-10">
-                                                    @Html.DisplayFor(model => item.EducationName)
+                                                    @*@Html.DisplayFor(model => item.EducationName)*@
+                                                    @Html.DisplayFor(modelItem => item.EducationName)
                                                 </dd>
                                                 <dt class="col-sm-2">
                                                     @Html.DisplayNameFor(model => model.EarningAvg)
@@ -132,7 +135,8 @@
 
                         </div>
                         @*@Html.ActionLink("Edit", "Edit", new { id = item.Id }) |*@
-                        <a data-toggle="modal" data-target="#myModal" class="model_textLink">Details  |</a>
+                        @*<a data-toggle="modal" data-target="#myModal" class="model_textLink">Details  |</a>*@
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }) |
                         @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
                         <a asp-action="SchoolMatch" asp-controller="School" asp-route-degreeId="@item.Id">Find Schools </a>
 

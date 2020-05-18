@@ -14,6 +14,7 @@ namespace SchoolScoreMVC.Models.SchoolViewModels
 
         public int DegreeId { get; set; }
 
+        [Display(Name = "Degree/ Program")]
         public string DegreeName { get; set; }
 
         //public List<School> Schools { get; set; }
@@ -21,5 +22,10 @@ namespace SchoolScoreMVC.Models.SchoolViewModels
         public string ReturnUrl { get; set; }
 
         public IEnumerable<SingleSchoolMatchViewModel> Schools { get; set; }
+
+        public string ReturnAction { get; set; }
+
+        public string ReturnController { get; set; }
+
     }
 }

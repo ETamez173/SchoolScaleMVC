@@ -81,6 +81,10 @@ namespace SchoolScoreMVC.Controllers
                        .ThenInclude(ds => ds.School)
                        .FirstOrDefaultAsync(d => d.Id == degreeId);
 
+
+                var returnAction = "MyMatches";
+                var ReturnController = "School";
+
                 viewModel.DegreeId = degree.Id;
                 viewModel.DegreeName = degree.EducationName;
 

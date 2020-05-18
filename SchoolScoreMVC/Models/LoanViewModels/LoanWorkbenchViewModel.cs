@@ -12,8 +12,10 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
         public int SchoolId { get; set; }
 
+        [Display(Name = "Degree/ Program")]
         public string DegreeName { get; set; }
 
+        [Display(Name = "School")]
         public string SchoolName { get; set; }
 
         //public List<School> Schools { get; set; }
