@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using SchoolScoreMVC.Data;
 using SchoolScoreMVC.Models;
-//using SchoolScoreMVC.Models.DegreeViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -44,11 +43,8 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-        // GET: Degrees & show currency  
+        // GET: Degrees 
         //localhost:5001/Degree/Degreelist
-
 
         public async Task<ActionResult> DegreeList()
         {
@@ -64,19 +60,13 @@ namespace SchoolScoreMVC.Controllers
             {
 
                 // build the item as a view model so we can show more information
-
-
                 var degrees = await _context.Degree.ToListAsync();
-
-
 
                 return View(degrees);
 
             }
 
         }
-
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         // GET: Modal for School Details
 
@@ -90,9 +80,7 @@ namespace SchoolScoreMVC.Controllers
             return View(degree);
         }
 
-
-
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+            
 
         /// GET: Degree/Details/5
         public async Task<IActionResult> Details(int? id)
@@ -113,11 +101,7 @@ namespace SchoolScoreMVC.Controllers
             return View(degree);
         }
 
-
-
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-        // GET: Degree/Create
+         // GET: Degree/Create
         public IActionResult Create()
         {
             ViewData["ApplicationUserId"] = new SelectList(_context.ApplicationUser, "Id", "Id");
@@ -151,8 +135,7 @@ namespace SchoolScoreMVC.Controllers
             }
         }
 
-        //==========================================================
-
+       
         // GET: Degree/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
@@ -174,15 +157,13 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
-        //========================================================== 
-
+        
         // POST: Degree/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
         //public ActionResult Edit(int id, IFormCollection collection)
         public async Task<IActionResult> Edit(int id, Degree degree)
         {
-
 
             if (id != degree.Id)
             {
@@ -209,27 +190,8 @@ namespace SchoolScoreMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-        //}
-
-
-        //    try
-        //    {
-        //        // TODO: Add update logic here
-
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-
-
-
-        //==========================================================
-
-
+       
+        
         // GET: Degree/Delete/5
         public ActionResult Delete(int id)
         {
@@ -254,12 +216,11 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
-
         private bool DegreeItemExists(int id)
         {
             return _context.Degree.Any(e => e.Id == id);
         }
-        // vid part 9 at 22.40 min pt
+  
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }

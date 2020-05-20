@@ -252,73 +252,73 @@ namespace SchoolScoreMVC.Migrations
                         new
                         {
                             Id = 1,
-                            EarningAvg = 90000.0,
-                            EarningHigh = 98000.0,
-                            EarningLow = 84000.0,
+                            EarningAvg = 94352.0,
+                            EarningHigh = 103213.0,
+                            EarningLow = 73721.0,
                             EducationName = "Electical Engineer"
                         },
                         new
                         {
                             Id = 2,
-                            EarningAvg = 90000.0,
-                            EarningHigh = 98000.0,
-                            EarningLow = 84000.0,
+                            EarningAvg = 87235.0,
+                            EarningHigh = 92453.0,
+                            EarningLow = 79440.0,
                             EducationName = "Chemical Engineer"
                         },
                         new
                         {
                             Id = 3,
-                            EarningAvg = 60000.0,
-                            EarningHigh = 73000.0,
-                            EarningLow = 55000.0,
+                            EarningAvg = 58340.0,
+                            EarningHigh = 73431.0,
+                            EarningLow = 48301.0,
                             EducationName = "Registered Nurse"
                         },
                         new
                         {
                             Id = 4,
-                            EarningAvg = 95000.0,
-                            EarningHigh = 105000.0,
-                            EarningLow = 80000.0,
+                            EarningAvg = 94301.0,
+                            EarningHigh = 106011.0,
+                            EarningLow = 78704.0,
                             EducationName = "Computer Science"
                         },
                         new
                         {
                             Id = 5,
-                            EarningAvg = 30000.0,
-                            EarningHigh = 38000.0,
-                            EarningLow = 24000.0,
+                            EarningAvg = 32476.0,
+                            EarningHigh = 53010.0,
+                            EarningLow = 24045.0,
                             EducationName = "Liberal Arts"
                         },
                         new
                         {
                             Id = 6,
-                            EarningAvg = 95000.0,
-                            EarningHigh = 105000.0,
-                            EarningLow = 80000.0,
+                            EarningAvg = 91402.0,
+                            EarningHigh = 105910.0,
+                            EarningLow = 78904.0,
                             EducationName = "Full Stack Software Developer"
                         },
                         new
                         {
                             Id = 7,
-                            EarningAvg = 95000.0,
-                            EarningHigh = 105000.0,
-                            EarningLow = 80000.0,
+                            EarningAvg = 90401.0,
+                            EarningHigh = 104201.0,
+                            EarningLow = 77801.0,
                             EducationName = "Front-End Web Designer Developer"
                         },
                         new
                         {
                             Id = 8,
-                            EarningAvg = 95000.0,
-                            EarningHigh = 105000.0,
-                            EarningLow = 80000.0,
+                            EarningAvg = 98704.0,
+                            EarningHigh = 115230.0,
+                            EarningLow = 83012.0,
                             EducationName = "Data Science"
                         },
                         new
                         {
                             Id = 9,
-                            EarningAvg = 95000.0,
-                            EarningHigh = 105000.0,
-                            EarningLow = 80000.0,
+                            EarningAvg = 94431.0,
+                            EarningHigh = 104878.0,
+                            EarningLow = 82401.0,
                             EducationName = "Data Analytics"
                         });
                 });
@@ -806,7 +806,19 @@ namespace SchoolScoreMVC.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AlternateText")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Photo")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReturnAction")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReturnController")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("SchoolName")
@@ -826,92 +838,92 @@ namespace SchoolScoreMVC.Migrations
                         new
                         {
                             Id = 1,
-                            Address = "",
-                            City = "",
+                            Address = "1301 E. Main St.",
+                            City = "Murfreesboro",
                             SchoolName = "MTSU",
-                            State = "",
-                            Zip = ""
+                            State = "TN",
+                            Zip = "37132"
                         },
                         new
                         {
                             Id = 2,
-                            Address = "",
-                            City = "",
+                            Address = "1 William L. Jones Dr.",
+                            City = "Cookeville",
                             SchoolName = "Tennesse Tech",
-                            State = "",
-                            Zip = ""
+                            State = "TN",
+                            Zip = "38505"
                         },
                         new
                         {
                             Id = 3,
-                            Address = "",
-                            City = "",
+                            Address = "2201 West End Ave.",
+                            City = "Nashville",
                             SchoolName = "Vanderbilt",
-                            State = "",
-                            Zip = ""
+                            State = "TN",
+                            Zip = "37235"
                         },
                         new
                         {
                             Id = 4,
-                            Address = "",
-                            City = "",
-                            SchoolName = "U of I Chicago",
-                            State = "",
-                            Zip = ""
+                            Address = "1200 W. Harrison",
+                            City = "Chicago",
+                            SchoolName = "University of Illinois Chicago",
+                            State = "IL",
+                            Zip = "60607"
                         },
                         new
                         {
                             Id = 5,
-                            Address = "",
-                            City = "",
-                            SchoolName = "U of I Urbana",
-                            State = "",
-                            Zip = ""
+                            Address = "1110 W. Springfield",
+                            City = "Urbana",
+                            SchoolName = "University of Illinois Urbana",
+                            State = "IL",
+                            Zip = "61801"
                         },
                         new
                         {
                             Id = 6,
-                            Address = "",
-                            City = "",
+                            Address = "400 East Main St.",
+                            City = "Frankfort",
                             SchoolName = "Kentucky State",
-                            State = "",
-                            Zip = ""
+                            State = "KY",
+                            Zip = "40601"
                         },
                         new
                         {
                             Id = 7,
-                            Address = "",
-                            City = "",
-                            SchoolName = "University of OH",
-                            State = "",
-                            Zip = ""
+                            Address = "1 Ohio University",
+                            City = "Athens",
+                            SchoolName = "Ohio University",
+                            State = "OH",
+                            Zip = "45701"
                         },
                         new
                         {
                             Id = 8,
-                            Address = "",
-                            City = "",
+                            Address = "1665 Hampshire Pike",
+                            City = "Columbia",
                             SchoolName = "Columbia State",
-                            State = "",
-                            Zip = ""
+                            State = "TN",
+                            Zip = "38401"
                         },
                         new
                         {
                             Id = 9,
-                            Address = "",
-                            City = "",
+                            Address = "301 Plus Park Blvd #300",
+                            City = "Nashville",
                             SchoolName = "Nashville School of Software",
-                            State = "",
-                            Zip = ""
+                            State = "TN",
+                            Zip = "37217"
                         },
                         new
                         {
                             Id = 10,
-                            Address = "",
-                            City = "",
+                            Address = "100 BBQ Lane",
+                            City = "Nashville",
                             SchoolName = "Bubbas School of Learning",
-                            State = "",
-                            Zip = ""
+                            State = "TN",
+                            Zip = "37217"
                         });
                 });
 

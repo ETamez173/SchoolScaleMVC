@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -37,6 +38,8 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         [Display(Name = "Interest Rate%")]
         public Double LoanRate { get; set; }
 
+        public IEnumerable<SelectListItem> Rates { get; set; }
+
 
         [Display(Name = "Loan Months")]
         public int LoanLengthMonths { get; set; }
@@ -44,6 +47,9 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
         [Display(Name = "Loan Period")]
         public int LoanLengthYears { get; set; }
+
+        public IEnumerable<SelectListItem> Years { get; set; }
+
 
         [Display(Name = "Monthly Payment")]
         public double LoanPayment { get; set; }
@@ -53,18 +59,19 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
         [Display(Name = "Your Contribution")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         [DataType(DataType.Currency)]
         public double CashPaid { get; set; }
 
         [Display(Name = "Available Grants")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
-        [DataType(DataType.Currency)]
+      
         public double Grants { get; set; }
 
 
         [Display(Name = "Available Scholarships")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
-        [DataType(DataType.Currency)]
+    
         public double Scholarships { get; set; }
 
         [Display(Name = "Total Amounts Paid")]
@@ -87,7 +94,7 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
 
       
-        // one user can have many loans 
+      
 
         public int DegreeSchoolId { get; set; }
 
