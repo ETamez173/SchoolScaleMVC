@@ -18,10 +18,15 @@ While on the “Benefit Cost Analysis” page the use can compare multiple degre
 
 
 # Installation
+
 In your terminal run git clone SSH KEY HERE
+
 Open Visual Studio
+
 Under the tools tab, open the NuGet Package Manager console and run Update-Database to run migrations
+
 Build and run the application after migrations are complete
+
 
 # Usage
 
