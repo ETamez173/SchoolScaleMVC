@@ -71,16 +71,7 @@ body {
 }
 
 
-.benCostAnalysis_num1 {
-    font-size: 2rem;
-    line-height: inherit;
-    background-color: aqua;
-}
 
-    .benCostAnalysis_num1:hover {
-        background-color: yellow;
-    }
-    /*benCostAnalysis_num2*/
 
 .body {
 
@@ -97,10 +88,19 @@ a.model_textLink {
     scroll-behavior: smooth;
 }
 
-.schoolName__boxWidth, .degreeName__boxWidth {
-    min-width: 275px;
+.schoolName__boxWidth {
+    min-width: 200px;
     background-color: yellow;
+    word-wrap:  normal;
 }
+
+.degreeName__boxWidth {
+    min-width: 200px;
+    background-color: yellow;
+    word-wrap:normal;
+}
+
+
 
 .scholarships__boxWidth, .grants__boxWidth,
 .cashPaid__boxWidth {
@@ -121,4 +121,75 @@ min-width: 100px;
 .loanLengthYears__boxWidth {
     min-width: 75px;
     background-color: yellow;
+}
+
+
+
+.benCostAnalysis_num1 {
+    color: brown;
+    font-size: 2rem;
+    line-height: inherit;
+    font-family:   Impact;
+    background-color: red;
+}
+
+    .benCostAnalysis_num1:hover {
+        /*background-color: greenyellow;*/
+    }
+/*benCostAnalysis_num2*/
+
+.degree__text, .general__text {
+    color: blue;
+    font-size: 1rem;
+    font-family: Arial;
+}
+
+.currency__num {
+    color: brown;
+    font-size: 1rem;
+    font-family: arial;
+}
+
+
+.estCareerEarn__num
+{
+color: green;
+font-size: 1rem;
+font-family: arial;
+}
+.school__text {
+    color: black;
+    font-size: 1rem;
+    font-family: Arial;
+}
+
+.label__text1 {
+    color: black;
+    font-size: 1rem;
+    font-family: Arial;
+}
+
+.create__degree, .create__school {
+    font-size: 1rem;
+    font-family: Arial;
+}
+
+
+.moPayment__num, .totLoanPayment__num, 
+.totAmountPaid__num {
+    color: red;
+    font-size: 1rem;
+    font-family: Arial;
+}
+
+.note__text {
+    color: darkslateblue;
+    font-size: 1rem;
+    font-family: Arial;
+    /*background-color: darkviolet;*/
+}
+
+.image__center {
+
+   justify-content: center;
 }

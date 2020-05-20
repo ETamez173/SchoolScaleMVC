@@ -80,9 +80,7 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
-
         //GET: Loan/CreateLoan
-
         //  Loan/CreateLoanCalc?degreeId=2&schoolId=5
         public async Task<ActionResult> CreateLoanCalc(int degreeId, int schoolId)
         {
@@ -93,12 +91,10 @@ namespace SchoolScoreMVC.Controllers
                .Include(ds => ds.School)
                .FirstOrDefaultAsync(ds => ds.DegreeId == degreeId && ds.SchoolId == schoolId);
 
-
             var totalSchoolCost = Degreeschool.TotalCost;
             var degreeName = Degreeschool.Degree.EducationName;
             var schoolName = Degreeschool.School.SchoolName;
             var degreesSchoolId = Degreeschool.Id;
-
             var LoanWorkbenchViewModel = new LoanWorkbenchViewModel()
             {
                 SchoolId = schoolId,
@@ -116,12 +112,10 @@ namespace SchoolScoreMVC.Controllers
         //// POST: Loan/CreateLoan
         ///Loan/CreateLoanCalc?degreeId=2&schoolId=5
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
 
         public async Task<IActionResult> CreateLoanCalc(int degreeId, int schoolId, LoanWorkbenchViewModel loanViewModel)
-
 
         {
             try
@@ -187,7 +181,6 @@ namespace SchoolScoreMVC.Controllers
         public ActionResult CreateLoan(int degreeId, int schoolId)
         {
 
-
             var LoanWorkbenchViewModel = new LoanWorkbenchViewModel()
             {
                 SchoolId = schoolId,
@@ -216,10 +209,8 @@ namespace SchoolScoreMVC.Controllers
                    .Include(ds => ds.School)
                    .FirstOrDefaultAsync(ds => ds.DegreeId == loanViewModel.DegreeId && ds.SchoolId == loanViewModel.SchoolId);
 
-
                 var totalSchoolCost = Degreeschool.TotalCost;
                 var futureCareerEarnings = (Degreeschool.Degree.EarningAvg * 20);
-
 
                 // Define variables to help calculate the loan payments
                 var loanAmount = (totalSchoolCost - (loanViewModel.CashPaid + loanViewModel.Grants + loanViewModel.Scholarships));
@@ -234,7 +225,6 @@ namespace SchoolScoreMVC.Controllers
 
 
                 {
-
                     FutureCareerEarnings = futureCareerEarnings,
                     TotalSchoolCost = totalSchoolCost,
                     CashPaid = loanViewModel.CashPaid,
@@ -267,101 +257,10 @@ namespace SchoolScoreMVC.Controllers
 
 
 
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-        // Editing a Loan with Workbench for the school-degree based on the degreeId & 
-        // schoolId passed when user clicks Begin Analysis within SchoolMatch view
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-        // GET: Loan/WorkBench?degreeId=2&schoolId=5   
-        //      Loan/WorkBench?schoolId=5&degreeId=2
-        public async Task<ActionResult> Workbench(int degreeId, int schoolId)
-        {
-            var user = await GetCurrentUserAsync();
-
-            // Check if the user is logged in, if they aren't, return 401
-            if (user == null)
-            {
-                return new StatusCodeResult(StatusCodes.Status401Unauthorized);
-            }
-
-            else
-            {
-
-                // build the item as a view model so we can show more information
-                var viewModel = new LoanWorkbenchViewModel();
-
-                // Grab the loans
-
-                var degreeschool = await _context.DegreeSchool
-                        .Include(ds => ds.Degree)
-                        .Include(ds => ds.School)
-                        .Include(ds => ds.Loan)
-                        .FirstOrDefaultAsync(ds => ds.DegreeId == degreeId && ds.SchoolId == schoolId);
-
-                viewModel.DegreeId = degreeId;
-                viewModel.SchoolId = schoolId;
-                viewModel.DegreeName = degreeschool.Degree.EducationName;
-                viewModel.SchoolName = degreeschool.School.SchoolName;
-                viewModel.TotalSchoolCost = degreeschool.TotalCost;
-                viewModel.DegreeSchoolId = degreeschool.Id;
-
-                viewModel.CashPaid = degreeschool.Loan.CashPaid;
-                viewModel.Grants = degreeschool.Loan.Grants;
-                viewModel.Scholarships = degreeschool.Loan.Scholarships;
-                viewModel.LoanAmount = degreeschool.Loan.LoanAmount;
-                viewModel.LoanLengthYears = degreeschool.Loan.LoanLengthYears;
-                viewModel.LoanRate = degreeschool.Loan.LoanRate;
-                viewModel.LoanPayment = degreeschool.Loan.LoanPayment;
-                viewModel.LoanRate = degreeschool.Loan.LoanRate;
-
-
-                return View(viewModel);
-
-            }
-
-        }
-
-        // POST: Loan/Edit/5
-        // Workbench POST
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        //public ActionResult Edit(int id, IFormCollection collection)
-
-        public async Task<IActionResult> EditWorkBench(int id, Loan loan)
-        {
-            if (id != loan.Id)
-            {
-                return NotFound();
-            }
-
-            try
-            {
-                _context.Update(loan);
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LoanExists(loan.Id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-
-            return RedirectToAction(nameof(Workbench));
-
-        }
-
 
 
         // GET: Loan/Edit/5
         // This the Add Notes Update Notes
-
         public async Task<ActionResult> Edit(int id)
         {
             var user = await GetCurrentUserAsync();

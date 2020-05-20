@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using SchoolScoreMVC.Data;
 using SchoolScoreMVC.Models;
-//using SchoolScoreMVC.Models.DegreeViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -31,8 +30,6 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
-
-
         // GET: localhost:5001/school
         public async Task<ActionResult> Index()
         //public async Task<ActionResult> Index(string filter)
@@ -54,7 +51,6 @@ namespace SchoolScoreMVC.Controllers
         //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
         // GET: Schools with Degree 
-
         // localhost:5001/School/SchoolMatch?degreeId=2
 
         public async Task<ActionResult> SchoolMatch(int degreeId)
@@ -70,10 +66,10 @@ namespace SchoolScoreMVC.Controllers
             else
             {
 
+                var returnAction = "MyMatches";
+                var ReturnController = "School";
                 // build the item as a view model so we can show more information
                 var viewModel = new MatchingSchoolsViewModel();
-
-                // Grab the schools
 
                 var degree = await _context.Degree
 
@@ -82,11 +78,13 @@ namespace SchoolScoreMVC.Controllers
                        .FirstOrDefaultAsync(d => d.Id == degreeId);
 
 
-                var returnAction = "MyMatches";
-                var ReturnController = "School";
+             
 
                 viewModel.DegreeId = degree.Id;
                 viewModel.DegreeName = degree.EducationName;
+
+                viewModel.ReturnAction = returnAction;
+                viewModel.ReturnController = ReturnController;
 
                 viewModel.Schools = degree.DegreeSchools.Select(ds => new SingleSchoolMatchViewModel()
                 {
@@ -97,6 +95,7 @@ namespace SchoolScoreMVC.Controllers
                     TotalCost = ds.TotalCost.ToString("c"),
                     SchoolId = ds.SchoolId,
                     DegreeId = ds.DegreeId
+                   
 
                 }).ToList();
 
@@ -108,16 +107,10 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
-        //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-
+  
         //// GET: School/Details/5
         //public ActionResult Details(int id)
-        //{
-        //    return View();
-        //}
 
-        /// GET: School/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -138,14 +131,7 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
-
-  
-
-
-
-
-
-
+        
         // GET: School/Create
         public ActionResult Create()
         {
@@ -157,7 +143,7 @@ namespace SchoolScoreMVC.Controllers
         // POST: School/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        //public ActionResult Create(IFormCollection collection)
+ 
              public async Task<IActionResult> Create([Bind("Id,SchoolName,Address,City,State, Zip")] School school)
         {
             try
@@ -185,12 +171,11 @@ namespace SchoolScoreMVC.Controllers
         // POST: School/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, IFormCollection collection)
         {
             try
             {
-                // TODO: Add update logic here
-
+                var user = await GetCurrentUserAsync();
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -199,30 +184,7 @@ namespace SchoolScoreMVC.Controllers
             }
         }
 
-        //// GET: School/Delete/5
-        //public ActionResult Delete(int id)
-        //{
-        //    return View();
-        //}
-
-        //// POST: School/Delete/5
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Delete(int id, IFormCollection collection)
-        //{
-        //    try
-        //    {
-        //        // TODO: Add delete logic here
-
-        //        return RedirectToAction(nameof(Index));
-        //    }
-        //    catch
-        //    {
-        //        return View();
-        //    }
-        //}
-
-        //===========================================
+       
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -230,6 +192,7 @@ namespace SchoolScoreMVC.Controllers
                 return NotFound();
             }
 
+            var user = await GetCurrentUserAsync();
             var school = await _context.School
                .FirstOrDefaultAsync(l => l.Id == id);
             if (school == null)
@@ -253,12 +216,7 @@ namespace SchoolScoreMVC.Controllers
         }
 
 
-
-
-
-
-
-        // vid part 9 at 22.40 min pt
+          
         private Task<ApplicationUser> GetCurrentUserAsync() => _userManager.GetUserAsync(HttpContext.User);
     }
 }

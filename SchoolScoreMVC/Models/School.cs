@@ -24,11 +24,19 @@ namespace SchoolScoreMVC.Models
 
         public string Zip { get; set; }
 
-       
+        public string Photo { get; set; }
+
+        public string AlternateText { get; set; }
+
+
 
         // this is to use the join table called DegreeSchool
         public List<DegreeSchool> DegreeSchools { get; set; }
 
+
+        public string ReturnAction { get; set; }
+
+        public string ReturnController { get; set; }
 
     }
 }

@@ -1,5 +1,5 @@
 ﻿@model IEnumerable<SchoolScoreMVC.Models.Loan>
-@*@model IEnumerable<SchoolScoreMVC.Models.LoanViewModels.LoanBenefitCostAnalysisViewModel>*@
+
 
 @{
     ViewData["Title"] = "Benefit Cost Analysis";
@@ -7,16 +7,12 @@
 
 <h1>Benefit Cost Analysis </h1>
 
-@*<p>
-        <a asp-action="Create">Create New</a>
-    </p>*@
 <table class="table table-hover">
     
 
-        @*<table class="table">*@
+      
     <thead>
-        @*<tr>*@
-        @*<tr class="table-primary">*@
+      
         <tr class="table-success">
             <th scope="row">
                 @Html.DisplayNameFor(model => model.DegreeSchool.Degree.EducationName)
@@ -34,12 +30,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.LoanAmount)
             </th>
-            @*<th>
-            @Html.DisplayNameFor(model => model.LoanRate)
-        </th>*@
-            @*<th>
-            @Html.DisplayNameFor(model => model.LoanLengthMonths)
-        </th>*@
+           
             <th>
                 @Html.DisplayNameFor(model => model.LoanLengthYears)
             </th>
@@ -47,15 +38,6 @@
                 @Html.DisplayNameFor(model => model.LoanPayment)
             </th>
 
-            @*<th>
-            @Html.DisplayNameFor(model => model.CashPaid)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Grants)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Scholarships)
-        </th>*@
             <th>
                 @Html.DisplayNameFor(model => model.TotalLoanPayments)
             </th>
@@ -81,55 +63,44 @@
     <tbody>
         @foreach (var item in Model)
         {
-            @*<tr class="table-info">*@
-            @*<tr class="table-secondary">*@
+       
             <tr class="table-light">
-                <td>
+                <td class="degree__text">
                     @Html.DisplayFor(modelItem => item.DegreeSchool.Degree.EducationName)
                 </td>
-                <td>
+                <td class="estCareerEarn__num">
                     @item.FutureCareerEarnings.ToString("c")
                 </td>
-                <td>
+                <td class="school__text">
                     @Html.DisplayFor(modelItem => item.DegreeSchool.School.SchoolName)
                 </td>
-                <td>
+                <td class="currency__num">
                     @item.TotalSchoolCost.ToString("c")
                 </td>
-                <td>
+                <td class="currency__num">
                     @item.LoanAmount.ToString("c")
                 </td>
-                <td>
+                <td class="general__text">
                     @Html.DisplayFor(modelItem => item.LoanLengthYears)
                 </td>
-                <td>
+                <td class="moPayment__num">
                     @item.LoanPayment.ToString("c")
                 </td>
-                <td>
+                <td class="totLoanPayment__num">
                     @item.TotalLoanPayments.ToString("c")
                 </td>
-
-
-                @*<td>
-                    @Html.DisplayFor(modelItem => item.CashPaid)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Grants)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Scholarships)
-                </td>*@
-                <td>
+                                      
+                <td class="totAmountPaid__num">
                     @item.TotalAmountPaid.ToString("c")
                 </td>
                 <td class="benCostAnalysis_num1 benCostAnalysis_num2">
                     @Html.DisplayFor(modelItem => item.BenefitCostAnalysisRatio)
                 </td>
-                <td>
+                <td class="note__text">
                     @Html.DisplayFor(modelItem => item.Notes)
                 </td>
                 <td>
-                    @Html.ActionLink("Add Edit Notes", "Edit", new { id = item.Id })
+                    @Html.ActionLink("Add & Edit Notes", "Edit", new { id = item.Id })
                 </td>
                 <td>
                     @Html.ActionLink("Delete", "Delete", new { id = item.Id })

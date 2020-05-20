@@ -85,9 +85,6 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         public ApplicationUser User { get; set; }
 
 
-
-        // one user can have many loans 
-
         public int DegreeSchoolId { get; set; }
 
         public DegreeSchool DegreeSchool { get; set; }

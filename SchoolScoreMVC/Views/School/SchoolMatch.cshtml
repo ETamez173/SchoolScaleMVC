@@ -7,7 +7,7 @@
 <h1>School Match</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="create__school" asp-action="Create">Add New School</a>
 </p>
 <table class="table table-hover">
     <thead>
@@ -48,19 +48,19 @@
                 @*<td>
                         @Html.DisplayFor(modelItem => item.Id)
                     </td>*@
-                <td>
+                <td class="degree__text">
                     @Html.DisplayFor(modelItem => Model.DegreeName)
                 </td>
-                <td>
+                <td class="school__text">
                     @Html.DisplayFor(modelItem => item.SchoolName)
                 </td>
-                <td>
+                <td class="general__text">
                     @Html.DisplayFor(modelItem => item.State)
                 </td>
-                <td>
+                <td class="currency__num">
                     @Html.DisplayFor(modelItem => item.AnnualCost)
                 </td>
-                <td>
+                <td class="currency__num">
                     @Html.DisplayFor(modelItem => item.TotalCost)
                 </td>
                 <td>
@@ -69,10 +69,10 @@
 
 
 
-                    @Html.ActionLink("Details", "Details", new { id = item.SchoolId })
+                    @Html.ActionLink("Details  | ", "Details", new { id = item.SchoolId })
                     @*<a data-toggle="modal" data-target="#myModal" class="model_textLink">Details |</a>*@
 
-                    <a class="btn-outline-secondary" asp-action="Details" name="SchoolId" asp-route-returnController="@Model.ReturnController" asp-route-returnAction="Model.ReturnAction" asp-route-id="item.SchoolId">Details</a>
+                    @*<a class="btn-outline-secondary" asp-action="Details" name="SchoolId" asp-route-returnController="@Model.ReturnController" asp-route-returnAction="@Model.ReturnAction" asp-route-id="@item.SchoolId">Details</a>*@
 
                     <a asp-action="CreateLoanCalc" asp-controller="Loan" asp-route-schoolId="@item.SchoolId" asp-route-degreeId="@Model.DegreeId">Begin Analysis </a>
 
