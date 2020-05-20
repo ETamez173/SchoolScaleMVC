@@ -15,10 +15,7 @@ On the “Benefit Cost Analysis” page the user is presented with a list of the
 
 While on the “Benefit Cost Analysis” page the use can compare multiple degree choices. The user can add a note to the listing and they are able to Delete a listing.
 
-Image of the app here
 
-<img src="SmartPantry/wwwroot/Images/MyPantryCapture.PNG" height="170" width="280">      <img src="SmartPantry/wwwroot/Images/MyGroceryCapture.PNG" height="170" width="280">
-<img src="SmartPantry/wwwroot/Images/RecipesCapture.PNG" height="170" width="280px">
 
 # Installation
 In your terminal run git clone SSH KEY HERE
