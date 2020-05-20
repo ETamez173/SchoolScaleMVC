@@ -15,9 +15,9 @@ On the “Benefit Cost Analysis” page the user is presented with a list of the
 
 While on the “Benefit Cost Analysis” page the use can compare multiple degree choices. The user can add a note to the listing and they are able to Delete a listing.
 
-# Image of the app here
+Image of the app here
 
-Installation
+# Installation
 In your terminal run git clone SSH KEY HERE
 Open Visual Studio
 Under the tools tab, open the NuGet Package Manager console and run Update-Database to run migrations
