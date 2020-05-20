@@ -122,7 +122,9 @@ namespace SchoolScoreMVC.Data
                    Address = "1301 E. Main St.",
                    City = "Murfreesboro",
                    State = "TN",
-                   Zip = "37132"
+                   Zip = "37132",
+                   AlternateText = "MTSU Photo",
+                   Photo = "MTSU.jpg"
                },
                 new School()
                 {
@@ -131,9 +133,11 @@ namespace SchoolScoreMVC.Data
                     Address = "1 William L. Jones Dr.",
                     City = "Cookeville",
                     State = "TN",
-                    Zip = "38505"
+                    Zip = "38505",
+                    AlternateText = "Tennessee Tech Photo",
+                    Photo = "TennTech.jpg"
                 },
-        
+
                 new School()
                 {
                     Id = 3,
@@ -141,7 +145,9 @@ namespace SchoolScoreMVC.Data
                     Address = "2201 West End Ave.",
                     City = "Nashville",
                     State = "TN",
-                    Zip = "37235"
+                    Zip = "37235",
+                    AlternateText = "Vanderbilt Photo",
+                    Photo = "Vanderbilt.jpg"
                 },
                 new School()
                 {
@@ -150,7 +156,9 @@ namespace SchoolScoreMVC.Data
                     Address = "1200 W. Harrison",
                     City = "Chicago",
                     State = "IL",
-                    Zip = "60607"
+                    Zip = "60607",
+                    AlternateText = "University of Illinois Chicago Photo",
+                    Photo = "UofIChicago.jpg"
                 },
                 new School()
                 {
@@ -159,7 +167,9 @@ namespace SchoolScoreMVC.Data
                     Address = "1110 W. Springfield",
                     City = "Urbana",
                     State = "IL",
-                    Zip = "61801"
+                    Zip = "61801",
+                    AlternateText = "University of Illinois Urbana Photo",
+                    Photo = "UofIUrbana.jpg"
                 },
                 new School()
                 {
@@ -168,7 +178,9 @@ namespace SchoolScoreMVC.Data
                     Address = "400 East Main St.",
                     City = "Frankfort",
                     State = "KY",
-                    Zip = "40601"
+                    Zip = "40601",
+                    AlternateText = "Kentucky State Photo",
+                    Photo = "KentuckyState.jpg"
                 },
                 new School()
                 {
@@ -177,7 +189,9 @@ namespace SchoolScoreMVC.Data
                     Address = "1 Ohio University",
                     City = "Athens",
                     State = "OH",
-                    Zip = "45701"
+                    Zip = "45701",
+                    AlternateText = "Ohio University Photo",
+                    Photo = "OhioUniv.jpg"
                 },
                 new School()
                 {
@@ -186,7 +200,9 @@ namespace SchoolScoreMVC.Data
                     Address = "1665 Hampshire Pike",
                     City = "Columbia",
                     State = "TN",
-                    Zip = "38401"
+                    Zip = "38401",
+                    AlternateText = "Columbia State Photo",
+                    Photo = "ColumbiaState.jpg"
                 },
                 new School()
                 {
@@ -195,7 +211,9 @@ namespace SchoolScoreMVC.Data
                     Address = "301 Plus Park Blvd #300",
                     City = "Nashville",
                     State = "TN",
-                    Zip = "37217"
+                    Zip = "37217",
+                    AlternateText = "Nashville School of Software Photo",
+                    Photo = "NSS.jpg"
                 },
                 new School()
                 {
@@ -204,7 +222,9 @@ namespace SchoolScoreMVC.Data
                     Address = "100 BBQ Lane",
                     City = "Nashville",
                     State = "TN",
-                    Zip = "37217"
+                    Zip = "37217",
+                    AlternateText = "Bubbas School of Learning Photo",
+                    Photo = ""
                 }
 
                );
