@@ -39,6 +39,10 @@ namespace SchoolScoreMVC.Models
         public double TotalLoanPayments { get; set; }
 
         [Display(Name = "Your Contribution")]
+        [Required(ErrorMessage = "Enter An Amount 0 and up")]
+        [Range(0, 50)]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         public double CashPaid { get; set; }
 
         [Display(Name = "Available Grants")]
