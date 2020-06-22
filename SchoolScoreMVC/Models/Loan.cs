@@ -40,7 +40,7 @@ namespace SchoolScoreMVC.Models
 
         [Display(Name = "Your Contribution")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
-        [Range(0, 50)]
+        [Range(0, 1000000)]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [DataType(DataType.Currency)]
         public double CashPaid { get; set; }

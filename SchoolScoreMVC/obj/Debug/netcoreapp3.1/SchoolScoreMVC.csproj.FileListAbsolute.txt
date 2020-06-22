@@ -117,7 +117,6 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\Microsoft.VisualBasic.Core.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\Microsoft.VisualBasic.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\Microsoft.Win32.Primitives.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\Microsoft.Win32.Registry.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\mscorlib.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\netstandard.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.AppContext.dll
@@ -142,7 +141,6 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Contracts.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Debug.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.DiagnosticSource.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.EventLog.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.FileVersionInfo.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.Process.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Diagnostics.StackTrace.dll
@@ -168,7 +166,6 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.IO.FileSystem.Watcher.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.IO.IsolatedStorage.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.IO.MemoryMappedFiles.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.IO.Pipelines.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.IO.Pipes.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.IO.UnmanagedMemoryStream.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Linq.dll
@@ -224,19 +221,14 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Runtime.Serialization.Json.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Runtime.Serialization.Primitives.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Runtime.Serialization.Xml.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.AccessControl.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Claims.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Algorithms.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Cng.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Csp.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Encoding.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Primitives.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.X509Certificates.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Cryptography.Xml.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Permissions.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Principal.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.Principal.Windows.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Security.SecureString.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.ServiceModel.Web.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.ServiceProcess.dll
@@ -261,7 +253,6 @@ C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Web.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Web.HttpUtility.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Windows.dll
-C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Windows.Extensions.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Xml.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Xml.Linq.dll
 C:\Users\Owner\Source\Repos\SchoolScoreMVC\SchoolScoreMVC\bin\Debug\netcoreapp3.1\refs\System.Xml.ReaderWriter.dll
