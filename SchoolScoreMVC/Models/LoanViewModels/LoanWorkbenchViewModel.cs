@@ -13,7 +13,7 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
         public int SchoolId { get; set; }
 
-        [Display(Name = "Degree/ Program")]
+        [Display(Name = "Degree / Program")]
         public string DegreeName { get; set; }
 
         [Display(Name = "School")]
@@ -26,6 +26,7 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
 
         [Display(Name = "Total Cost")]
+        [DisplayFormat(DataFormatString = "{0:C}")]
         public double TotalSchoolCost { get; set; }
 
 
@@ -36,6 +37,8 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         public double LoanAmount { get; set; }
 
         [Display(Name = "Interest Rate%")]
+        [Required(ErrorMessage = "Enter An Amount 0 to 30")]
+        [Range(0, 30)]
         public Double LoanRate { get; set; }
 
         public IEnumerable<SelectListItem> Rates { get; set; }
@@ -44,8 +47,10 @@ namespace SchoolScoreMVC.Models.LoanViewModels
         [Display(Name = "Loan Months")]
         public int LoanLengthMonths { get; set; }
 
-
         [Display(Name = "Loan Period")]
+        [Required(ErrorMessage = "Enter An Amount 0 to 40")]
+        [Range(0, 40)]
+
         public int LoanLengthYears { get; set; }
 
         public IEnumerable<SelectListItem> Years { get; set; }
@@ -59,22 +64,32 @@ namespace SchoolScoreMVC.Models.LoanViewModels
 
         [Display(Name = "Your Contribution")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
+        [Range(0, 1000000)]
         [DisplayFormat(DataFormatString = "{0:C}")]
         [DataType(DataType.Currency)]
         public double CashPaid { get; set; }
 
         [Display(Name = "Available Grants")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
-      
+        [Range(0, 1000000)]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
+
         public double Grants { get; set; }
 
 
         [Display(Name = "Available Scholarships")]
         [Required(ErrorMessage = "Enter An Amount 0 and up")]
-    
+        [Range(0, 1000000)]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         public double Scholarships { get; set; }
 
         [Display(Name = "Total Amounts Paid")]
+        [Required(ErrorMessage = "Enter An Amount 0 and up")]
+        [Range(0, 1000000)]
+        [DisplayFormat(DataFormatString = "{0:C}")]
+        [DataType(DataType.Currency)]
         public double TotalAmountPaid { get; set; }
 
         [Display(Name = "Career Earnings")]
